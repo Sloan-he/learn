@@ -3,6 +3,19 @@
 var s = 'Hello';
 
 function greet(name){
-	console.log(s + ',' + name + '!');
+	console.log(s + ', ' + name + '!');
 }
-module.exports = greet;
+
+function hi(name){
+	console.log('hi, ' + name + '!');
+}
+
+function goodBye(name){
+	console.log('GoodBye, ' + name + '!');
+}
+
+module.exports = {
+	greet:greet,
+	hi:hi,
+	goodBye:goodBye
+}
