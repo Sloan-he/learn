@@ -18,10 +18,8 @@ var server = http.createServer(function(request,response){
 
 	//获得url的path.类似'/css/bootstrap.css'
 	var pathname = url.parse(request.url).pathname;
-
 	//获取对应的本地文件路径,类似'/srv/www/css/bootstrap.css'
 	var filepath = path.join(root,pathname);
-	console.log(filepath);
 	//获取文件状态
 	fs.stat(filepath,function(err,stats){
 		if(!err && stats.isFile()){
@@ -32,7 +30,7 @@ var server = http.createServer(function(request,response){
 			response.writeHead(200);
 
 			//将文件流导向response
-			fs.creatReadStream(filepath).pipe(response);
+			fs.createReadStream(filepath).pipe(response);
 		}else{
 
 			// 出错了或者文件不存在
