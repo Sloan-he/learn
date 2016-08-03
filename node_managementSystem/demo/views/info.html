@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= appName %></title>
+</head>
+<style>
+th,td{
+	border: 1px solid #ddd;
+}
+</style>
+<body>
+	<table>
+		<tr>
+			<th>账号</th>
+			<th>邮箱</th>
+			<th>年龄</th>
+			<th>昵称</th>
+			<th>真是姓名</th>
+			<th>操作</th>
+		</tr>
+		<% for(var i = 0;i < sqldb.length;i++){%>
+			<tr>
+				<td><%= sqldb[i].loginname %></td>
+				<td><%= sqldb[i].email %></td>
+				<td><%= sqldb[i].age %></td>
+				<td><%= sqldb[i].nickname %></td>
+				<td><%= sqldb[i].realname %></td>
+				<td><a href="deletUser?useid=<%= sqldb[i].id %>">删除</a></td>
+			</tr>
+		<% } %>
+	</table>
+</body>
+</html>
