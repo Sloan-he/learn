@@ -7,6 +7,10 @@ var ejs = require('ejs');
 var routes = require('./router/index');
 var info = require('./router/info');
 var deletUser = require('./router/deletUser');
+var login = require('./router/login');
+var reg = require('./router/reg');
+var register = require('./router/register');
+var error = require('./router/error');
 
 
 var app = express();
@@ -23,6 +27,10 @@ app.set('view engine', 'html');
 app.use('/', routes);
 app.use('/info', info);
 app.use('/deletUser', deletUser);
+app.use('/login', login);
+app.use('/error', error);
+app.use('/reg',reg);
+app.use('/register',register);
 
 
 // 监听服务，端口：8080
