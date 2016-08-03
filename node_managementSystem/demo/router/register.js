@@ -13,19 +13,26 @@ function register(uname,upwd,callback){
 
 
 	connection.connect();
-	var sqlDataName = 'select * form userinfos where loginname=' + uname;
+	var sqlDataName = 'select * from userinfos where loginname=' + uname;
+	var isStatus = false;
 	connection.query(sqlDataName,function(err,result){
-		if(result.length == 1){
-			callback(false);
+		if(result == '' || result == 'underfined' || result == null){
+			isStatus = true;
 			return;
 		}
 	});
 
 
+	if(isStatus){
+		callback(false);
+		return;
+	}
+
+
 	var sql = 'insert into userinfos (loginname,passwd) values (?,?)';
 	var params = [uname,upwd];
-
 	connection.query(sql,params,function(err){
+		console.log('-------------ok---------');
 		err ? callback(false) : callback(true);
 	});
 }
@@ -40,7 +47,9 @@ module.exports = function(req,res,next){
 				title:'用户管理系统'
 			});
 		}else{
-			res.render('error');
+			res.render('error',{
+				tip:'账号已存在'
+			});
 		}
 	});
 
