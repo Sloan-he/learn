@@ -17,7 +17,8 @@ th,td{
 			<th>年龄</th>
 			<th>昵称</th>
 			<th>真是姓名</th>
-			<th>操作</th>
+			<th>删除用户</th>
+			<th>修改资料</th>
 		</tr>
 		<% for(var i = 0;i < sqldb.length;i++){%>
 			<tr>
@@ -27,6 +28,7 @@ th,td{
 				<td><%= sqldb[i].nickname %></td>
 				<td><%= sqldb[i].realname %></td>
 				<td><a href="deletUser?useid=<%= sqldb[i].id %>">删除</a></td>
+				<td><a href="editUser?userid=<%= sqldb[i].id %>">修改</a></td>
 			</tr>
 		<% } %>
 	</table>

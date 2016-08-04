@@ -11,6 +11,8 @@ var login = require('./router/login');
 var reg = require('./router/reg');
 var register = require('./router/register');
 var error = require('./router/error');
+var editUser = require('./router/editUser');
+var editSubmit = require('./router/editSubmit');
 
 
 var app = express();
@@ -31,6 +33,8 @@ app.use('/login', login);
 app.use('/error', error);
 app.use('/reg',reg);
 app.use('/register',register);
+app.use('/editUser',editUser);
+app.use('/editSubmit',editSubmit);
 
 
 // 监听服务，端口：8080
