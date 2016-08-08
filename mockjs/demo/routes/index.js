@@ -29,16 +29,59 @@ var number = mock.mock({
 	}]
 });
 
-var boolean = mock.mock({
+var booleans = mock.mock({
 	'list|10':[{
 		'boolean|2':false
 	}]
 });
 
+var obj = mock.mock({
+	'Object1|3':{
+		'a':1,
+		'b':2,
+		'c':3 
+	},
+	'Object2|1-5':{
+		'a':1,
+		'b':2,
+		'c':3 
+	}
+});
 
-var ret = JSON.stringify(boolean);
+var arr = mock.mock({
+	'array1|1':[{
+		'a':1,
+		'b':2,
+		'c':3
+	},{
+		'd':4,
+		'e':5,
+		'f':6
+	}],
+	'array2|1-2':[{  
+		'a':1,
+		'b':2,
+		'c':3
+	},{
+		'd':4,
+		'e':5,
+		'f':6 
+	}]
+});
+
+var fun = mock.mock({
+	'titles':'hello mockjs',
+
+	'function':function(){
+		return this.titles;
+	}
+});
+
+
+var ret = JSON.stringify(fun);
 router.get('/mockjs', function(req, res, next) {
   res.render('index', { title: ret });
 });
 
 module.exports = router;
+console.log();
