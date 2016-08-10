@@ -7,8 +7,29 @@
     <title>JD商城左侧分类导航菜单</title>
 
     <link type="text/css" rel="stylesheet" href="css/index.css"/>
-
+  <!--   <script type="text/javascript" src="temp/js/index_v20.js"/></script> -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
 </head>
+<script type="text/javascript">
+  
+  $(function(){
+    $(document).click(function(){
+    $.ajax({
+      url:'http://192.168.0.3:3000/mockjs',
+      type:'get',
+      async:false,
+      cache:false,
+      dataType:'jsonp',
+      sueecss:function(data){
+        console.log(data);
+      },
+      error:function(e){
+        alert(err);
+      }
+    });
+  });
+  });
+</script>
 <body>
 <div id="nav">
     <div class="area clearfix">
@@ -929,25 +950,24 @@
 
 
 </div>
-<script type="text/javascript" src="temp/js/index_v20.js"/>
-<script type="text/javascript">
-    (function () {
-        var $menuLi = $('#nav .menu');
-        var $menuHd = $('#nav .menu-hd');
-        var $menuBd = $('#nav .menu-bd');
-        var $arrow = $('#nav .m1 i');
-        $menuBd.hover(function () {
-            $menuHd.addClass('on');
-        }, function () {
-            $menuHd.removeClass('on');
-        });
-        $menuLi.hover(function () {
-            $menuHd.children('b').addClass('b-on');
-        }, function () {
-            $menuHd.children('b').removeClass('b-on');
-        })
-    })();
-</script>
 
 </body>
 </html>
+<script type="text/javascript">
+    // (function () {
+    //     var $menuLi = $('#nav .menu');
+    //     var $menuHd = $('#nav .menu-hd');
+    //     var $menuBd = $('#nav .menu-bd');
+    //     var $arrow = $('#nav .m1 i');
+    //     $menuBd.hover(function () {
+    //         $menuHd.addClass('on');
+    //     }, function () {
+    //         $menuHd.removeClass('on');
+    //     });
+    //     $menuLi.hover(function () {
+    //         $menuHd.children('b').addClass('b-on');
+    //     }, function () {
+    //         $menuHd.children('b').removeClass('b-on');
+    //     })
+    // })();
+</script>

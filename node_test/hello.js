@@ -1,6 +1,9 @@
 'use strict'
 
 var s = 'Hello';
+require('colors');
+
+console.log('hesy'.random);
 
 function greet(name){
 	console.log(s + ', ' + name + '!');
