@@ -13,22 +13,67 @@
 <script type="text/javascript">
   
   $(function(){
-    $(document).click(function(){
     $.ajax({
-      url:'http://192.168.0.3:3000/mockjs',
+      url:'http://localhost:3000/mockjs',
       type:'get',
       async:false,
       cache:false,
       dataType:'jsonp',
-      sueecss:function(data){
-        console.log(data);
+      jsonp:'callback',
+      jsonpCallback: "ok",
+      complete:function(XMLHttpRequest, textStatus){
+        console.log(XMLHttpRequest);
+        console.log(textStatus);
       },
-      error:function(e){
-        alert(err);
+      success:function(json){
+        alert(1);
+        console.log(json);
+      },
+      error:function(XMLHttpReuqest, textStautus, errothrown){
+        console.log(XMLHttpRequest.status);
+          console.log(XMLHttpReuqest.readyState);
+         console.log(XMLHttpRequest.responseText);
+          console.log(textStautus);
+          console.log(errothrown); 
       }
     });
   });
-  });
+
+// $(function(){
+//   $.getJSON('http://localhost:3000/mockjs', function(data) {
+//   console.log(data);
+//   // var html = '<ul>';
+//   // for(var i = 0; i < data.length; i++)
+//   // {
+//   //   html += '<li>' + data[i] + '</li>';
+//   // }
+//   // html += '</ul>';
+  
+//   // $('#divCustomers').html(html); 
+// });
+// });
+</script>
+<script>
+   // $.ajax({
+   //    async: false,
+   //    url: "",
+   //    type: "post",
+   //    dataType: 'jsonp',
+   //    jsonp: 'callbackparam',
+   //    jsonpClaaback: "success_jsonpCallback",
+   //    //用户定义的callback函数，没有定义的话会jQuery会自动生成以jQuery开头的函数
+   //    data: {},
+   //    error: function (XMLHttpReuqest, textStautus, errothrown) {
+   //        console.log(XMLHttpRequest.status);
+   //        console.log(XMLHttpReuqest.readyState);
+   //        console.log(XMLHttpRequest.responseText);
+   //        console.log(textStautus);
+   //        console.log(errothrown);                 
+   //      },
+   //      success: function (json) {
+   //                alert(json);       
+   //                          }             
+   //    });
 </script>
 <body>
 <div id="nav">

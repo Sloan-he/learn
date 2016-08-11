@@ -94,9 +94,8 @@ var template = {
 var data = mock.mock(template);
 router.get('/mockjs', function(req, res, next) {
 	var callback = req.query.callback;
-  console.log(callback);
 	var ret = JSON.stringify(data,null,4);
-	var ret = callback + '(' + ret + ')';
+	var ret =  callback + '(' + ret +')';
 	res.send(ret);
 });
 
