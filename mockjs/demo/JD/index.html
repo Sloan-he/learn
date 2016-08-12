@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<style>
+body{
+	padding-top: 80px;
+}
+*{
+	padding:0;
+	margin: 0;
+}
+.categorys{
+	width: 1132px;
+}
+.dd-inner{
+	width: 210px;
+	background: #c81623;
+	float: left;
+}
+a{
+	text-decoration: none;
+}
+.dd-inner .item{
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+.dd-inner .item a{
+	color: #fff;
+	font-size: 12px;
+}
+.item-sub{
+	position: relative;
+	display: none;
+}
+.dropdown{
+	width: 900px;
+	border: 1px solid #c81623;
+	padding: 10px;
+	float: left;
+	min-height: 428px;
+	display: none;
+}
+.dropitem{
+	width: 660px;
+	margin-bottom: 10px;
+}
+.dropitem:last-child{
+	margin-bottom: 0;
+}
+.dropitem:last-child dl{
+	border-bottom: none;
+}
+.dropitem dt{
+	width: 55px;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	text-align: right;
+	padding-right: 5px;
+}
+.dropitem dt a{
+	font-size: 12px;
+	color: #666;
+	font-size: 'simsun';
+}
+.dropitem dt a:hover{
+	color: #B1191A;
+}
+.dropitem dl{
+	float: left;
+	width: 600px;
+	border-bottom: 1px solid #ddd;
+}
+.dropitem dl a{
+	font-size: 12px;
+	color: #666;
+	line-height: 20px;
+	display: inline-block;
+	border-left: 1px solid #ddd;
+	padding:0 5px;
+	margin-bottom: 8px;
+}
+.dropitem dl a:hover{
+	color: #B1191A;
+}
+.drop-banner{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 168px;
+}
+.drop-banner .item{
+	margin-bottom: 6px;
+}
+.drop-banner .item img{
+	height: 35px;
+	width: 168px;
+}
+.clearfix:after{
+	clear: both;
+	height: 0;
+	display: block;
+	visibility: hidden;
+	content: " "
+}
+</style>
+<body>
+	<div class="categorys clearfix">
+		<div class="dd-inner">
+		</div>
+		<div class="dropdown">
+			<!-- <div class="item-sub" data-sub="1">
+				<div class="subitems">
+					<dl class="dropitem clearfix">
+						<dt><a href="">进口电器></a></dt>
+						<dl>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+						</dl>
+					</dl>
+					<dl class="dropitem clearfix">
+						<dt><a href="">进口电器></a></dt>
+						<dl>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+							<a href="">家庭影音</a>
+						</dl>
+					</dl>
+				</div>
+				<div class="drop-banner"></div>
+			</div> -->
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	$(function(){
+		$.ajax({
+			url:'http://localhost:3000/mockjs',
+			dataType:'jsonp',
+			jsonp:'callback',
+			jsonpCallBack:'?',
+			success:function(data){
+				var foreItem = '';
+				var dropItems = '';
+				$.each(data,function(n,obj){
+					//console.log(obj[0].foreBrands);
+					for (var i = 0; i < obj.length; i++) {
+						foreItem += '<div class="item" data-fore="' + obj[i].foreId + '">'
+						foreItem += '<a href="' + obj[i].foreUrl + '">' + obj[i].foreName + '</a>'
+						foreItem += '</div>'
+						dropItems += '<div class="item-sub" data-sub="'+ obj[i].foreId +'">'
+						dropItems += '<div class="subitems">'
+						for (var dropi = 0; dropi < obj[i].dropItem.length; dropi++) {
+							dropItems += '<dl class="dropitem clearfix">'	
+							dropItems += '<dt><a href="' + obj[i].dropItem[dropi].dropUrl + '" id="' + obj[i].dropItem[dropi].dropId + '">' + obj[i].dropItem[dropi].dropName + '></a>'
+							dropItems += '</dt>'
+							dropItems += '<dl>'
+							for(var subi = 0;subi < obj[i].dropItem[dropi].subItem.length;subi++) {
+								dropItems += '<a href="'
+								dropItems += obj[i].dropItem[dropi].subItem[subi].subUrl 
+								dropItems +='">'
+								dropItems += obj[i].dropItem[dropi].subItem[subi].subName
+								dropItems +='</a>'
+							};
+							dropItems += '</dl>'
+							dropItems += '</dl>'
+						};
+						dropItems += '</div>'
+						dropItems += '<div class="drop-banner">'
+						for (var brandsi = 0; brandsi < obj[i].foreBrands.length; brandsi++) {
+							dropItems += '<div class="item"><img src='
+							dropItems += obj[i].foreBrands[brandsi].images
+							dropItems += '></div>'
+						};
+						dropItems += '</div>'
+						dropItems += '</div>'
+					};
+				});
+				$('.dd-inner').append(foreItem);
+				$('.dropdown').append(dropItems);
+			}
+		})
+	});
+
+	$('.categorys').on('mouseenter mouseleave',function(event){
+		if(event.type == 'mouseenter'){
+			$('.dropdown').show();
+		}else{
+			$('.dropdown').hide();
+		}
+	});
+
+	$('.categorys').on('mouseenter mouseleave','.item',function(event){
+		
+		if(event.type == 'mouseenter'){
+			var id = $(this).data('fore');
+			$('.item-sub[data-sub='+id+']').show();
+		}else{
+			$('.item-sub').hide();
+		}
+	});	
+</script>
