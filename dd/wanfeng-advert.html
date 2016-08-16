@@ -5,11 +5,11 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>采购平台-企业首页</title>
-	<link rel="stylesheet" href="../../../css/allstyle.css">
-	<link rel="stylesheet" href="../../../css/module.css">
-	<link rel="stylesheet" href="../../../css/usercenter.css">
-	<script src="../../../js/jquery-1.8.2.min.js"></script>
-	<script src="../../../js/qy-portal.js"></script>
+	<link rel="stylesheet" href="allstyle.css">
+	<link rel="stylesheet" href="module.css">
+	<link rel="stylesheet" href="usercenter.css">
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="qy-portal.js"></script>
 </head>
 <body>
 <div class="head-w">
@@ -94,57 +94,57 @@
 				</div>
 				<div class="advert-big-img">
 					<div data-big="1" class="item on">
-						<img src="../../../images/unslider1.jpg" alt=""/>
+						<img src="unslider1.jpg" alt=""/>
 					</div>
 					<div data-big="2" class="item">
-						<img src="../../../images/unslider2.jpg" alt=""/>
+						<img src="unslider2.jpg" alt=""/>
 					</div>
 					<div data-big="3" class="item">
-						<img src="../../../images/unslider3.jpg" alt=""/>
+						<img src="unslider3.jpg" alt=""/>
 					</div>
 					<div data-big="4" class="item">
-						<img src="../../../images/unslider4.jpg" alt=""/>
+						<img src="unslider4.jpg" alt=""/>
 					</div>
 					<div data-big="5" class="item">
-						<img src="../../../images/unslider5.jpg" alt=""/>
+						<img src="unslider5.jpg" alt=""/>
 					</div>
 					<div data-big="6" class="item">
-						<img src="../../../images/unslider6.jpg" alt=""/>
+						<img src="unslider6.jpg" alt=""/>
 					</div>
 				</div>
 				<div class="advert-small-list clearfix">
 					<div data-small="1" class="banner-small margin-R">
-						<img src="../../../images/unslider1.jpg" alt=""/>
+						<img src="unslider1.jpg" alt=""/>
 						<div class="small-toolbar">
 							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
 						</div>
 					</div>
 					<div data-small="2" class="banner-small margin-R">
-						<img src="../../../images/unslider2.jpg" alt=""/>
+						<img src="unslider2.jpg" alt=""/>
 						<div class="small-toolbar">
 							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
 						</div>
 					</div>
 					<div data-small="3" class="banner-small margin-R">
-						<img src="../../../images/unslider3.jpg" alt=""/>
+						<img src="unslider3.jpg" alt=""/>
 						<div class="small-toolbar">
 							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
 						</div>
 					</div>
 					<div data-small="4" class="banner-small margin-R">
-						<img src="../../../images/unslider4.jpg" alt=""/>
+						<img src="unslider4.jpg" alt=""/>
 						<div class="small-toolbar">
 							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
 						</div>
 					</div>
 					<div data-small="5" class="banner-small margin-R">
-						<img src="../../../images/unslider5.jpg" alt=""/>
+						<img src="unslider5.jpg" alt=""/>
 						<div class="small-toolbar">
 							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
 						</div>
 					</div>
 					<div data-small="6" class="banner-small">
-						<img src="../../../images/unslider6.jpg" alt=""/>
+						<img src="unslider6.jpg" alt=""/>
 						<div class="small-toolbar">
 							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
 						</div>
@@ -219,8 +219,8 @@ $(function(){
 	$(document).on('click','.banner-small img',function(){
 		var thisParent = $(this).parents('.banner-small');
 		var thisID = thisParent.data('small');
-		$('[data-big=' + thisID +']').addClass('on').siblings().removeClass('on');
-		$('[data-form=' + thisID +']').addClass('on').siblings().removeClass('on');
+		$('[data-big=' + thisID +'],[data-form=' + thisID +']')
+			.addClass('on').siblings().removeClass('on');
 	});
 
 	$(document).on('mouseenter mouseleave','.banner-small',function(e){
@@ -231,22 +231,23 @@ $(function(){
 		}
 	});
 
-	$(document).on('click','.small_r',function(event){
-		var thisParent = $(this).parents('.banner-small');
-		var nextDom = thisParent.next();
-		nextDom.after(thisParent.clone());
-		thisParent.remove();
-	});
+	$(document).on('click','.small_r,.small_l,.small_close',function(){
 
-	$(document).on('click','.small_l',function(event){
-		var thisParent = $(this).parents('.banner-small');
-		var prevDom = thisParent.prev();
-		prevDom.before(thisParent.clone());
+		var thisParent = $(this).parents('.banner-small'),
+			thisIndex = thisParent.index();
+		if($(this).hasClass('small_close')){
+			thisParent.find('img').attr('src','');
+			return;
+		}
+		if($(this).hasClass('small_l') && thisIndex !=0){
+			var prevDom = thisParent.prev();
+			prevDom.before(thisParent.clone());
+		}
+		if($(this).hasClass('small_r') && thisIndex !=5){
+			var nextDom = thisParent.next();
+			nextDom.after(thisParent.clone());
+		}
 		thisParent.remove();
-	});
-
-	$(document).on('click','.small_close',function(event){
-		$(this).parents('.banner-small').find('img').attr('src','');
 	});
 });
 </script>

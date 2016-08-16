@@ -1477,6 +1477,7 @@
 	display: inline-block;
 	position: absolute;
 	cursor: pointer;
+	background: #000;
 }
 .banner-small .small-toolbar .small_l{
 	left:12px;
@@ -1497,6 +1498,7 @@
 }
 .advert-big-img .item{
 	display: none;
+	height: 280px;
 }
 .advert-big-img .item.on{
 	display: block;
