@@ -1,0 +1,252 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>采购平台-企业首页</title>
+	<link rel="stylesheet" href="../../../css/allstyle.css">
+	<link rel="stylesheet" href="../../../css/module.css">
+	<link rel="stylesheet" href="../../../css/usercenter.css">
+	<script src="../../../js/jquery-1.8.2.min.js"></script>
+	<script src="../../../js/qy-portal.js"></script>
+</head>
+<body>
+<div class="head-w">
+	<div class="head-nav clearfix">
+		<div class="head-left">
+			<div class="history-go"></div>
+			<div class="logo-new"></div>
+			<div class="webapp-login">
+				<a href="">
+					<div class="icon-box"><i class="iconfont">&#xe65a;</i></div>
+					<p>登录</p>
+				</a>
+			</div>
+		</div>
+		<!-- 左边 -->
+		<div class="head-right">
+			<div class="nav-menu">
+				<ul>
+					<li><a class="on" href="">首页</a></li>
+					<li><a href="">企业采购</a></li>
+					<li><a href="">采购清单</a></li>
+					<li><a href="">工程信息</a></li>
+					<li><a href="">供应商</a></li>
+					<li><a href="">品牌街</a></li>
+				</ul>
+			</div>
+			<div class="nav-search">
+				<div class="search-list" data-state="off">
+					<div class="search-target" data-id="{'type':'shoplist','placeholder'='搜采购清单'}">
+						<span class="targetSpan">采购单</span><i class="iconfont">&#xe65b;</i>
+					</div>
+					<div class="search-jt"></div>
+					<div class="search-sel">
+						<ul>
+							<li>
+								<a data-id='{"type":"shoplist","placeholder":"搜采购清单"}'>采购单</a></li>
+							<li>
+								<a data-id='{"type":"material","placeholder":"搜材料"}'>材料</a></li>
+							<li><a data-id='{"type":"purchaser","placeholder":"搜采购商"}'>
+								采购商</a>
+							</li>
+							<li>
+								<a data-id='{"type":"supplier","placeholder":"搜供应商"}'>供应商</a></li>
+						</ul>
+					</div>
+				</div>
+				<input type="text" class="text" placeholder='搜采购清单'>
+				<button>搜索</button>
+			</div>
+			<!-- on-login是登录后添加 -->
+			<div class="nav-login on-login">
+				<div class="login-head"></div>
+				<div class="login-msg">
+					<div class="login-jt"></div>
+					<!-- <ul>
+						<li>您好，<a class="username" href="">天广消防股份有限公司</a></li>	
+						<li><i class="cgxm iconfont">&#xe649;</i><a href="">采购项目</a></li>
+						<li><i class="cgqd iconfont">&#xe647;</i><a href="">采购清单</a></li>
+						<li><i class="exit-login iconfont">&#xe64a;</i><a href="">退出登录</a></li>
+						<li><i class="iconfont"></i><a href="">我的中标</a></li>
+						<li><i class="iconfont">&#xe62a;</i><a href="">报价记录</a></li>
+						<li><i class="iconfont">&#xe60a;</i><a href="">我的收藏</a></li>
+					</ul> -->
+					<ul>
+						<li><i class="iconfont">&#xe61b;</i><a href="">请登录</a></li>
+						<li><i class="iconfont">&#xe64e;</i><a href="">免费注册</a></li>
+						<li><i class="iconfont">&#xe64f;</i><a href="">我是采购商</a></li>
+						<li><i class="iconfont">&#xe650;</i><a href="">我是供应商</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 头部结束 -->
+<div class="wrap clearfix">
+	<div class="usercenter-menu"></div>
+	<div class="user-center-main clearfix">
+				<div class="bill-process clearfix">
+					<span class="advert-process-1 left">首页广告图片</span>
+					<span class="advert-process-2 left"></span>
+				</div>
+				<div class="advert-big-img">
+					<div data-big="1" class="item on">
+						<img src="../../../images/unslider1.jpg" alt=""/>
+					</div>
+					<div data-big="2" class="item">
+						<img src="../../../images/unslider2.jpg" alt=""/>
+					</div>
+					<div data-big="3" class="item">
+						<img src="../../../images/unslider3.jpg" alt=""/>
+					</div>
+					<div data-big="4" class="item">
+						<img src="../../../images/unslider4.jpg" alt=""/>
+					</div>
+					<div data-big="5" class="item">
+						<img src="../../../images/unslider5.jpg" alt=""/>
+					</div>
+					<div data-big="6" class="item">
+						<img src="../../../images/unslider6.jpg" alt=""/>
+					</div>
+				</div>
+				<div class="advert-small-list clearfix">
+					<div data-small="1" class="banner-small margin-R">
+						<img src="../../../images/unslider1.jpg" alt=""/>
+						<div class="small-toolbar">
+							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
+						</div>
+					</div>
+					<div data-small="2" class="banner-small margin-R">
+						<img src="../../../images/unslider2.jpg" alt=""/>
+						<div class="small-toolbar">
+							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
+						</div>
+					</div>
+					<div data-small="3" class="banner-small margin-R">
+						<img src="../../../images/unslider3.jpg" alt=""/>
+						<div class="small-toolbar">
+							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
+						</div>
+					</div>
+					<div data-small="4" class="banner-small margin-R">
+						<img src="../../../images/unslider4.jpg" alt=""/>
+						<div class="small-toolbar">
+							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
+						</div>
+					</div>
+					<div data-small="5" class="banner-small margin-R">
+						<img src="../../../images/unslider5.jpg" alt=""/>
+						<div class="small-toolbar">
+							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
+						</div>
+					</div>
+					<div data-small="6" class="banner-small">
+						<img src="../../../images/unslider6.jpg" alt=""/>
+						<div class="small-toolbar">
+							<i class="small_l"></i><i class="small_r"></i><i class="small_close"></i>
+						</div>
+					</div>
+				</div>
+				<div data-form="1" class="img-link-total on">
+					<div class="img-link">
+						图片链接 <input type="text" class="img-input" value="1"/>
+					</div>
+					<div class="img-link">
+						图片描述 <input type="text" class="img-input"/>
+					</div>
+				</div>
+
+				<div data-form="2" class="img-link-total">
+					<div class="img-link">
+						图片链接 <input type="text" class="img-input" value="2"/>
+					</div>
+
+					<div class="img-link">
+						图片描述 <input type="text" class="img-input"/>
+					</div>
+				</div>
+				<div data-form="3" class="img-link-total">
+					<div class="img-link">
+						图片链接 <input type="text" class="img-input" value="3"/>
+					</div>
+
+					<div class="img-link">
+						图片描述 <input type="text" class="img-input"/>
+					</div>
+				</div>
+				<div data-form="4" class="img-link-total">
+					<div class="img-link">
+						图片链接 <input type="text" class="img-input" value="4"/>
+					</div>
+
+					<div class="img-link">
+						图片描述 <input type="text" class="img-input"/>
+					</div>
+				</div>
+				<div data-form="5" class="img-link-total">
+					<div class="img-link">
+						图片链接 <input type="text" class="img-input" value="5"/>
+					</div>
+
+					<div class="img-link">
+						图片描述 <input type="text" class="img-input"/>
+					</div>
+				</div>
+				<div data-form="6" class="img-link-total">
+					<div class="img-link">
+						图片链接 <input type="text" class="img-input" value="6"/>
+					</div>
+
+					<div class="img-link">
+						图片描述 <input type="text" class="img-input"/>
+					</div>
+				</div>
+				<div class="img-set">
+					<button class="img-set-btn btn btn-orange">图片上传</button>
+					<p>图片尺寸建议为 1920*547像素</p>
+					<div class="btn btn-sm btn-orange btn-radius">提交</div>
+				</div>
+	</div>
+
+<!-- 主体结束 -->
+</body>
+</html>
+<script>
+$(function(){
+	$(document).on('click','.banner-small img',function(){
+		var thisParent = $(this).parents('.banner-small');
+		var thisID = thisParent.data('small');
+		$('[data-big=' + thisID +']').addClass('on').siblings().removeClass('on');
+		$('[data-form=' + thisID +']').addClass('on').siblings().removeClass('on');
+	});
+
+	$(document).on('mouseenter mouseleave','.banner-small',function(e){
+		if(e.type == 'mouseenter'){
+			$(this).children('.small-toolbar').show();
+		}else{
+			$(this).children('.small-toolbar').hide();
+		}
+	});
+
+	$(document).on('click','.small_r',function(event){
+		var thisParent = $(this).parents('.banner-small');
+		var nextDom = thisParent.next();
+		nextDom.after(thisParent.clone());
+		thisParent.remove();
+	});
+
+	$(document).on('click','.small_l',function(event){
+		var thisParent = $(this).parents('.banner-small');
+		var prevDom = thisParent.prev();
+		prevDom.before(thisParent.clone());
+		thisParent.remove();
+	});
+
+	$(document).on('click','.small_close',function(event){
+		$(this).parents('.banner-small').find('img').attr('src','');
+	});
+});
+</script>
