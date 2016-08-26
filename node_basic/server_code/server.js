@@ -46,13 +46,15 @@ function parseParam(req){
 		req.on('end',function(){
 			req.param = qs.parse(paramData);
 		});
+
 	}
 
 	if(req.method.toUpperCase() == 'GET'){
 		req.param = url.parse(req.url,true).query;
 	}
 
-	console.log(req.param);
+	return req.param;
+	 // console.log(req.param);
 
 }
 
