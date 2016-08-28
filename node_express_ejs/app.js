@@ -4,6 +4,7 @@ var http = require('http');
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var qs = require('qs');
 // 得到app模块
 var app = express();
 
@@ -20,6 +21,8 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
+
+
 //挂载访问静态资源中间件
 app.use('/',express.static(__dirname+'/public',{index:false}));
 
@@ -28,6 +31,7 @@ app.use('/',express.static(__dirname+'/public',{index:false}));
 app.all('/',function(req,res){
 	console.log('hello server');
 	console.log(req.body);
+	console.log(qs.parse(req.query));
 	res.send('hello world');
 	res.end();
 });
