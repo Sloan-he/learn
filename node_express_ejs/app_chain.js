@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 
+// 链式写法
 app.route('/')
 	.get(function(req,res,next){
 		req.user = req.query;

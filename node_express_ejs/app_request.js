@@ -8,12 +8,13 @@ var localCount = require('./route/local_count.js');
 // 得到app模块
 var app = express();
 
+app.use(express.static(__dirname+'/public',{index:false}));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cookieParser('secret'));
 
 
-
+// request属性
 app.route('/simple')
 	.get(function(req,res,next){
 		console.log('hostname=' + req.hostname);
@@ -36,6 +37,7 @@ app.route('/simple')
 	});
 
 
+// 设置cookie解析
 app.get('/signed',function(req,res){
 	console.log(req.signedCookies);
 	res.cookie('pwd','1234',{signed:true});
@@ -45,6 +47,24 @@ app.get('/signed',function(req,res){
 
 app.locals.num = 0;
 app.get('/app',localCount);
+
+
+// param方法获取参数
+app.route('/')
+	.get(function(req,res,next){
+		console.log('get::' + req.param('username'));
+		next();
+	})
+	.post(function(req,res,next){
+		console.log('post:' + req.param('username'));
+		next();
+	})
+	.all(function(req,res){
+		console.log('all:' + req.param('username'));
+		res.send('ok');
+		res.end();
+	});
+
 
 
 

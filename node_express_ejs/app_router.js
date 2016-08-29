@@ -52,6 +52,7 @@ app.get('/fun',function(res,req,next){
 	console.log('two');
 });
 
+// 数组类型,混合类型
 app.get('/array',[one,two],function(res,req){
 	console.log('three');
 	req.send('hello world!');
