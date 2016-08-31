@@ -66,6 +66,14 @@ app.route('/')
 	});
 
 
+// request .get方法和is方法
+app.get('/get',function(req,res){
+	console.log(req.get('accept'));
+	console.log(req.is('text/html'));
+	res.send('ok');
+	res.end();
+});
+
 
 
 
