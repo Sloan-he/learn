@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div class="app">
+		<p>{{message}}</p>
+		<input type="text" v-model="message">
+	</div>
+	<span class="app2">
+		<ul>
+			<li v-for="todo in todos">{{todo.text}}</li>
+		</ul>
+	</span>
+</body>
+</html>
+<script>
+	//双向绑定 
+	new Vue({
+		el:'.app',
+		data:{
+			message:'Hello vue.js'
+		}
+	});
+	// 渲染列表
+	new Vue({
+		el:'.app2',
+		data:{
+			todos:[
+				{text:'learn vue.js'},
+				{text:'learn node.js'},
+				{text:'learn less'}
+			]
+		}
+	});
+</script>
