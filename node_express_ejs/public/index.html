@@ -6,9 +6,10 @@
 </head>
 <body>
 	<p>中间件</p>
-	<form action="http://localhost:3000" method="post">
+	<form action="http://localhost:3000/fileupload" method="post" enctype="multipart/form-data">
 		name <input type="text" name="username">
 		pwd <input type="text" name="pwd">
+		<input type="file" name="uploadFile">
 		<input type="submit" value="Commit">
 	</form>
 </body>
