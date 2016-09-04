@@ -5,31 +5,12 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>采购平台-企业首页</title>
-	<!-- <link rel="stylesheet" href="allstyle.css"> -->
-	<!-- <link rel="stylesheet" href="module.css"> -->
-	<!-- <link rel="stylesheet" href="usercenter.css"> -->
-	<!--<script src="../../../js/jquery-1.8.2.min.js"></script>
-	<script src="../../../js/qy-portal.js"></script>-->
+	<link rel="stylesheet" href="allstyle.css">
+	<link rel="stylesheet" href="module.css">
+	<link rel="stylesheet" href="usercenter.css">
 	<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 </head>
-<style>
-	.uploaded-img div{
-	width: 110px;
-	height: 110px;
-	float: left;
-	border:2px dashed transparent;
-	margin: 8px 7px;
-	cursor: move;
-}
-.uploaded-img div img{
-	width: 106px;
-	height: 106px;
-	z-index: -1;
-}
-.uploaded-img div.on{
-	border-color:red; 
-}
-</style>
+
 <body>
 <div class="head-w">
 	<div class="head-nav clearfix">
@@ -185,11 +166,11 @@
 		<!-- 展厅上传 -->
 		<!-- 已上传图片 -->
 		<div class="bill-process clearfix">
-			<span class="advert-process-1 margin-b-30 left">展厅详情</span>
+			<span class="advert-process-1 margin-b-30 left">已上传图片</span>
 			<span class="advert-process-2 left"></span>
 		</div>
 		<div class="uploaded-img clearfix">
-			<!-- <ul>
+			<ul>
 				<li><img src="15/1.jpg" alt=""></li>
 				<li><img src="15/2.jpg" alt=""></li>
 				<li><img src="15/3.jpg" alt=""></li>
@@ -198,43 +179,42 @@
 				<li><img src="15/6.jpg" alt=""></li>
 				<li><img src="15/7.jpg" alt=""></li>
 				<li><img src="15/8.jpg" alt=""></li>
-				
-			</ul> -->
-			<div class="ww" ondragover="allowDrop(event)" ondrop="drop(event)"><img src="15/22.png"  ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
-				<div id="" class="ww" ondragover="allowDrop(event)" ondrop="drop(event)"><img src="15/33.png" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+				<li><img src="15/9.jpg" alt=""></li>
+				<li><img src="15/10.jpg" alt=""></li>
+			</ul>
 		</div>
 	</div>
 	<!-- 主体结束 -->
 </body>
 </html>
 <script>
-var dragDom;
-// 移动时触发
-function dragstart(event){
-	dragDom = $(event.target).parents('.ww');
-	dragDom.addClass('on');
-}
-//在放置元素上松开鼠标时触发
-function drop(event){
-	event.preventDefault();
-	var oldDragDom = dragDom;
-	$(event.target).after(dragDom.children()).remove();
- 	oldDragDom.append(event.target);
-}
-// 移动完后触发
-function dragend(event){
-	event.preventDefault();
-	$('div').removeClass('on');
-}
+$(function(){
+	var dragDom;
 
-//让默认不让放置的元素允许放置
-function allowDrop(event){
-	event.preventDefault();
-};
-// $(function(){
-// 	var dragDom;
+	// 移动时触发
+	$('.uploaded-img').on('drag dragend','img',function(event){
+		event.preventDefault();
+		dragDom = $(event.target).parent('li');
+		dragDom.addClass('on');
 
-// 	//$('.uploaded-img li').on('')
-// });
+		// 判断是否移动完后
+		if(event.type == 'dragend'){
+			$('.uploaded-img li').removeClass('on');
+		}
+	});
+
+	//在放置元素上松开鼠标时触发
+	$('.uploaded-img').on('drop','li',function(event){
+		event.preventDefault();
+		var oldDragDom = dragDom;
+		$(event.target).after(dragDom.children()).remove();
+	 	oldDragDom.append(event.target);
+	});
+
+	//让默认不让放置的元素允许放置
+	$('.uploaded-img').on('dragover','li',function(event){
+		event.preventDefault();
+	});
+});
 </script>
 
