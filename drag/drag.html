@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<style>
+	div{width: 200px;height: 160px;border:3px solid #ddd;text-align: center;margin-bottom:10px;}
+	img{width: 200px;height: 160px;z-index: -1}
+	div.on{border:3px dashed red;}
+</style>
+<body>
+	<div ondragover="allowDrop(event)" ondrop="drop(event)">
+		<img src="11.png" id="imgid1" ondragend="dragend(event)" ondragstart="dragstart(event)">
+	</div>
+	<div ondragover="allowDrop(event)" ondrop="drop(event)">
+		<img src="22.png" id="imgid2" ondragend="dragend(event)" ondragstart="dragstart(event)">
+	</div>
+	<div ondragover="allowDrop(event)" ondrop="drop(event)">
+		<img src="33.png" id="imgid3" ondragend="dragend(event)" ondragstart="dragstart(event)">
+	</div>
+	<div ondragover="allowDrop(event)" ondrop="drop(event)">
+		<img src="44.jpg" id="imgid4" ondragend="dragend(event)" ondragstart="dragstart(event)">
+	</div>
+	
+</body>
+</html>
+<script>
+var dragDom;
+// 移动时触发
+function dragstart(event){
+	dragDom = $(event.target).parents('div');
+	dragDom.addClass('on');
+}
+//在放置元素上松开鼠标时触发
+function drop(event){
+	event.preventDefault();
+	var oldDragDom = dragDom;
+	$(event.target).after(dragDom.children()).remove();
+ 	oldDragDom.append(event.target);
+	
+}
+// 移动完后触发
+function dragend(event){
+	event.preventDefault();
+	$('div').removeClass('on');
+}
+
+//让默认不让放置的元素允许放置
+function allowDrop(event){
+	event.preventDefault();
+};
+
+
+</script>

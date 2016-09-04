@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>采购平台-企业首页</title>
+	<!-- <link rel="stylesheet" href="allstyle.css"> -->
+	<!-- <link rel="stylesheet" href="module.css"> -->
+	<!-- <link rel="stylesheet" href="usercenter.css"> -->
+	<!--<script src="../../../js/jquery-1.8.2.min.js"></script>
+	<script src="../../../js/qy-portal.js"></script>-->
+	<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<style>
+	.uploaded-img div{
+	width: 110px;
+	height: 110px;
+	float: left;
+	border:2px dashed transparent;
+	margin: 8px 7px;
+	cursor: move;
+}
+.uploaded-img div img{
+	width: 106px;
+	height: 106px;
+	z-index: -1;
+}
+.uploaded-img div.on{
+	border-color:red; 
+}
+</style>
+<body>
+<div class="head-w">
+	<div class="head-nav clearfix">
+		<div class="head-left">
+			<div class="history-go"></div>
+			<div class="logo-new"></div>
+			<div class="webapp-login">
+				<a href="">
+					<div class="icon-box"><i class="iconfont">&#xe65a;</i></div>
+					<p>登录</p>
+				</a>
+			</div>
+		</div>
+		<!-- 左边 -->
+		<div class="head-right">
+			<div class="nav-menu">
+				<ul>
+					<li><a class="on" href="">首页</a></li>
+					<li><a href="">企业采购</a></li>
+					<li><a href="">采购清单</a></li>
+					<li><a href="">工程信息</a></li>
+					<li><a href="">供应商</a></li>
+					<li><a href="">品牌街</a></li>
+				</ul>
+			</div>
+			<div class="nav-search">
+				<div class="search-list" data-state="off">
+					<div class="search-target" data-id="{'type':'shoplist','placeholder'='搜采购清单'}">
+						<span class="targetSpan">采购单</span><i class="iconfont">&#xe65b;</i>
+					</div>
+					<div class="search-jt"></div>
+					<div class="search-sel">
+						<ul>
+							<li>
+								<a data-id='{"type":"shoplist","placeholder":"搜采购清单"}'>采购单</a></li>
+							<li>
+								<a data-id='{"type":"material","placeholder":"搜材料"}'>材料</a></li>
+							<li><a data-id='{"type":"purchaser","placeholder":"搜采购商"}'>
+								采购商</a>
+							</li>
+							<li>
+								<a data-id='{"type":"supplier","placeholder":"搜供应商"}'>供应商</a></li>
+						</ul>
+					</div>
+				</div>
+				<input type="text" class="text" placeholder='搜采购清单'>
+				<button>搜索</button>
+			</div>
+			<!-- on-login是登录后添加 -->
+			<div class="nav-login on-login">
+				<div class="login-head"></div>
+				<div class="login-msg">
+					<div class="login-jt"></div>
+					<!-- <ul>
+						<li>您好，<a class="username" href="">天广消防股份有限公司</a></li>	
+						<li><i class="cgxm iconfont">&#xe649;</i><a href="">采购项目</a></li>
+						<li><i class="cgqd iconfont">&#xe647;</i><a href="">采购清单</a></li>
+						<li><i class="exit-login iconfont">&#xe64a;</i><a href="">退出登录</a></li>
+						<li><i class="iconfont"></i><a href="">我的中标</a></li>
+						<li><i class="iconfont">&#xe62a;</i><a href="">报价记录</a></li>
+						<li><i class="iconfont">&#xe60a;</i><a href="">我的收藏</a></li>
+					</ul> -->
+					<ul>
+						<li><i class="iconfont">&#xe61b;</i><a href="">请登录</a></li>
+						<li><i class="iconfont">&#xe64e;</i><a href="">免费注册</a></li>
+						<li><i class="iconfont">&#xe64f;</i><a href="">我是采购商</a></li>
+						<li><i class="iconfont">&#xe650;</i><a href="">我是供应商</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 头部结束 -->
+<div class="wrap clearfix">
+	<div class="usercenter-menu"></div>
+	<div class="user-center-main clearfix">
+		<div class="bill-process clearfix">
+			<span class="advert-process-1 change-border margin-b-30 left">展厅详情</span>
+			<span class="advert-process-2 left"></span>
+		</div>
+        <div class="banner-input">
+			<ul class="con-list-2-1">
+				<li >
+					<label class="obj-name change-width" for="">标题</label>
+					<input type="text" class="form-control title" placeholder="">
+				</li>
+				<li>
+					<div class="sort-type clearfix">
+						<div class="obj-select left">
+							<span class="obj-name change-width" >种类</span><select name="select" id="select_k1" class="form-control margin-L-3 case-select" >
+							<option value="选择品牌">360展厅</option>
+							<option value="选择品牌1">选择品牌1</option>
+							<option value="选择品牌2">选择品牌2</option>
+						</select>
+						</div>
+						<div class="sort-input left">
+							<label class="obj-name change-width" for="">排序</label>
+							<input type="text" class="form-control" placeholder="">
+						</div>
+					</div>
+				</li>
+				<li >
+					<label class="obj-name change-width" for="">内容</label>
+				    <textarea class="display-cont form-control" rows="5"></textarea>
+				</li>
+			</ul>
+		</div>
+		<!-- 类型 -->
+		<div class="Showroom-upload panel">
+			<div class="placeholder">
+				<div class="placeholder-pic"></div>
+				<div class="uploader-pick">
+					<span class="btn btn-radius btn-blue btn-file">
+					<input type="file">
+					点击选择图片
+					</span>
+				</div>
+				<div class="placeholder-text">或将照片拖到这里，单次最多可选300张</div>	
+			</div>
+			<div class="queue">
+				<div class="queue-list clearfix">
+					<ul>
+						<li>
+							<div class="file-panel">
+								<span class="rotateLeft"></span>
+								<span class="rotateRight"></span>
+								<span class="cancel"></span>
+							</div>
+							<div class="imgwrap"><img src="../../../images/unslider6.jpg"></div>
+						</li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+						<li><img src="../../../images/unslider6.jpg" alt=""></li>
+					</ul>
+				</div>
+				<div class="uploadbar clearfix">
+					<div class="left info">选中9张图片，共2.12M。</div>
+					<div class="right button-btns">
+						<span class="btn-radius btn-white btn btn-file">
+							<input type="file">
+							继续添加
+						</span>
+						<span class="btn-radius btn-blue btn">开始上传</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 展厅上传 -->
+		<!-- 已上传图片 -->
+		<div class="bill-process clearfix">
+			<span class="advert-process-1 margin-b-30 left">展厅详情</span>
+			<span class="advert-process-2 left"></span>
+		</div>
+		<div class="uploaded-img clearfix">
+			<!-- <ul>
+				<li><img src="15/1.jpg" alt=""></li>
+				<li><img src="15/2.jpg" alt=""></li>
+				<li><img src="15/3.jpg" alt=""></li>
+				<li><img src="15/4.jpg" alt=""></li>
+				<li><img src="15/5.jpg" alt=""></li>
+				<li><img src="15/6.jpg" alt=""></li>
+				<li><img src="15/7.jpg" alt=""></li>
+				<li><img src="15/8.jpg" alt=""></li>
+				
+			</ul> -->
+			<div class="ww" ondragover="allowDrop(event)" ondrop="drop(event)"><img src="15/22.png"  ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+				<div id="" class="ww" ondragover="allowDrop(event)" ondrop="drop(event)"><img src="15/33.png" ondragstart="dragstart(event)" ondragend="dragend(event)"></div>
+		</div>
+	</div>
+	<!-- 主体结束 -->
+</body>
+</html>
+<script>
+var dragDom;
+// 移动时触发
+function dragstart(event){
+	dragDom = $(event.target).parents('.ww');
+	dragDom.addClass('on');
+}
+//在放置元素上松开鼠标时触发
+function drop(event){
+	event.preventDefault();
+	var oldDragDom = dragDom;
+	$(event.target).after(dragDom.children()).remove();
+ 	oldDragDom.append(event.target);
+}
+// 移动完后触发
+function dragend(event){
+	event.preventDefault();
+	$('div').removeClass('on');
+}
+
+//让默认不让放置的元素允许放置
+function allowDrop(event){
+	event.preventDefault();
+};
+// $(function(){
+// 	var dragDom;
+
+// 	//$('.uploaded-img li').on('')
+// });
+</script>
+
