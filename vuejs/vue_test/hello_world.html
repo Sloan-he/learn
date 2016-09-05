@@ -10,11 +10,28 @@
 		<p>{{message}}</p>
 		<input type="text" v-model="message">
 	</div>
-	<span class="app2">
+	<div class="app2">
 		<ul>
 			<li v-for="todo in todos">{{todo.text}}</li>
 		</ul>
-	</span>
+	</div>
+	<div class="app3">
+		<p>{{message}}</p>
+		<input type="button" v-on:click="reverseMessage" value="reverseMessage click">
+	</div>
+	<br>
+	<div class="app4">
+		<input type="text" v-model="newTodo" v-on:keyup.enter="addTodo">
+		<ul>
+			<li v-for="todo in todos">
+				<span>{{todo.text}}</span>
+				<button v-on:click="removeTodo($index)">X</button>
+			</li>
+		</ul>
+	</div>
+	<div id="example-1">
+  Hello {{ name }}!
+</div>
 </body>
 </html>
 <script>
@@ -34,6 +51,42 @@
 				{text:'learn node.js'},
 				{text:'learn less'}
 			]
+		}
+	});
+
+	// 处理用户输入
+	new Vue({
+		el:'.app3',
+		data:{
+			message:'Hello vue.js'
+		},
+		methods:{
+			reverseMessage:function(){
+				this.message = this.message.split('').reverse().join('');
+			}
+		}
+	});
+
+	// 综合功能
+	new Vue({
+		el:'.app4',
+		data:{
+			newTodo:'',
+			todos:[
+				{text:'Add some todos'}
+			]
+		},
+		methods:{
+			addTodo:function(){
+				var text =  this.newTodo.trim();
+				if(text){
+					this.todos.push({text:text});
+					this.newTodo = '';
+				}
+			},
+			removeTodo:function(index){
+				this.todos.splice(index,1);
+			}
 		}
 	});
 </script>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example-1">
+		<p>Hello {{name}}</p>
+	</div>
+	<div id="example-2">
+		<p v-if="greeting">Hello !</p>
+	</div>
+</body>
+</html>
+<script>
+	var exampleVM = new Vue({
+		el:'#example-1',
+		data:{
+			name:'vue.js'
+		}
+	});
+
+	var exampleVM2 = new Vue({
+		el:'#example-2',
+		data:{
+			greeting:true
+		}
+	});
+</script>
