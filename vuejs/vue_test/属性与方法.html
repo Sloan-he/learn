@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example1">
+		<p>vm1:{{a}}</p>
+	</div>
+	<div id="example2">
+		<p>vm2:{{a}}</p>
+	</div>
+</body>
+</html>
+<script>
+	//代理实例属性
+	var data = {a:1};
+	var vm1 = new Vue({
+		el:'#example1',
+		data:data
+	});
+
+	data.a = 150;
+
+	//实例的方法
+	var data2 = {a:10};
+	var vm2 = new Vue({
+		el:'#example2',
+		data:data2
+	});
+
+	//true
+	vm2.$data === data2;
+	//true
+	vm2.$el === document.getElementById('example2');
+
+	// $watch是一个实例方法
+	//这个回调将在'vm.a' 改变后调用
+	vm2.$watch('a',function(newVal,oldVal){
+		console.log(newVal,oldVal);
+	});
+
+	//实例生命周期
+	var vm3 = new Vue({
+		data:{
+			a:1
+		},
+		created:function(){
+			console.log('a is:' + this.a);
+		}
+	});
+</script>

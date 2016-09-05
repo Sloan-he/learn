@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<!-- 加上*号只处理当次 -->
+	<div id="app">Message:{{* msg}}</div>
+
+	<!-- 原始的html -->
+	<div id="app2">{{{raw_html}}}</div>
+
+	<!-- HTML特性 -->
+	<div id="app3">
+		<div v-for="todo in idList" id="{{todo.idb}}">
+			HTML特性{{todo.idb}}
+		</div>
+	</div>
+
+
+
+	-----------------------------------------	
+	<!-- 绑定表达式 -->
+	<div id="app4">
+		<p>{{number + 1}}</p>
+		<p>{{ok ? 'Yes':'No'}}</p>
+		<p>{{message.split('').reverse().join('')}}</p>
+	</div>
+	<!-- 过滤器 -->
+	<div id="app5">
+		<p>{{message | capitalize}}</p>
+	</div>
+	<!-- 参数 -->
+	<div id="app6">
+		<a v-bind:href="aurl">百度</a>
+		<button v-on:click="doSomething">点击触发</button>
+	</div>
+	<!-- 缩写 -->
+	<div id="app7">
+		<a :href="aurl">淘宝</a>
+		<button @click="doSomething">点击触发</button>
+	</div>
+</body>
+</html>
+<script>
+	//插值 
+	var app1 = new Vue({
+		el:'#app',
+		data:{
+			msg:'hello'
+		}
+	});
+
+	var app2 = new Vue({
+		el:'#app2',
+		data:{
+			raw_html:'<span>vue.js</span>'
+		}
+	});
+
+	var app3 = new Vue({
+		el:'#app3',
+		data:{
+			idList:[
+				{idb:1},
+				{idb:2},
+				{idb:3},
+				{idb:4}
+			]
+		}
+	});
+
+
+	// 绑定表达式
+	var app4 = new Vue({
+		el:'#app4',
+		data:{
+			number:1,
+			ok:true,
+			message:'hello world'
+		}
+	});
+
+	// 过滤器
+	var app5 = new Vue({
+		el:'#app5',
+		data:{
+			message:'hesy'
+		}
+	});
+
+	// 参数
+	var app6 = new Vue({
+		el:'#app6',
+		data:{
+			aurl:'http://baidu.com'
+		},
+		methods:{
+			doSomething:function(){
+				alert('doSomething');
+			}
+		}
+	});
+
+	// 缩写
+	var app7 = new Vue({
+		el:'#app7',
+		data:{
+			aurl:'http://taobao.com'
+		},
+		methods:{
+			doSomething:function(){
+				alert('doSomething');
+			}
+		}
+	});
+</script>
