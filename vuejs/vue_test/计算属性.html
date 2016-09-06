@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+		a={{a}},b={{b}},c={{c}}
+	</div>
+	<div id="example2">
+		{{fullname}}
+	</div>
+</body>
+</html>
+<script>
+	var vm1 = new Vue({
+		el:'#example',
+		data:{
+			a:1
+		},
+		computed:{
+			b:function(){
+				return this.a + 1;
+			},
+			c:function(){
+				return this.a + this.b;
+			}
+		}
+	});
+
+	var vm2 = new Vue({
+		el:'#example2',
+		data:{
+			firstname:'he',
+			lastname:'shiyun',
+		},
+		computed:{
+			fullname:{
+				// getter
+				get:function(){
+					return this.firstname + ' ' + this.lastname;
+				},
+				//setter
+				set:function(newValue){
+					var names = newValue.split(' ');
+					this.firstname = names[0];
+					this.lastname = names[names.length - 1];
+				}
+			}
+		}
+	});
+
+</script>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<!-- 绑定CLASS -->
+	<div id="example">
+		<!-- 对象语法 -->
+		<p class="static" :class="{'class-a':isA,'class-b':isB}">对象语法</p>
+		<!-- 对象 -->
+		<p :class="classobj">对象</p>
+		<!-- 数组 -->
+		<p :class="[arrA,arrB]">数组</p>
+		<!-- 数组混对象 -->
+		<p :class="[arrA,{arrB:isA}]">数组混对象</p>
+	</div>
+	<!-- 绑定内联样式 -->
+	<div id="example2">
+		<p :style="{width:width,height:height,background:backGround}">内联对象语法</p>
+		<p :style="styleObj">内联对象</p>
+		<p :style="[styleObj, styleObj2]">内联数组</p>
+	</div>
+</body>
+</html>
+<script>
+	// 绑定样式
+	var vm1 = new Vue({
+		el:'#example',
+		data:{
+			isA:true,
+			isB:false,
+			classobj:{
+				'class-a':true,
+				'class-b':false
+			},
+			arrA:'arr-a',
+			arrB:'arr-b'
+		}
+	});
+
+	// 绑定内联样式
+	var vm2 = new Vue({
+		el:'#example2',
+		data:{
+			width:'100px',
+			height:'30px',
+			backGround:'#ccc',
+			styleObj:{
+				color:'red',
+				fontSize:'14px'
+			},
+			styleObj2:{
+				border:'1px solid #ddd',
+				padding:'20px'
+			}
+		}
+	});
+</script>
