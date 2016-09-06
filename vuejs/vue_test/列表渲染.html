@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+		<ul>
+			<li v-for="item of items">{{item.message}}</li>
+		</ul>
+		<ul>
+			<li v-for="item of itemtwo">parent - {{$index}} - {{item.message}}</li>
+		</ul>
+		<ul>
+			<li v-for="(index, item) of itemtwo">
+				{{index}} - {{item.message}}
+			</li>
+		</ul>
+		<ul>
+			<template v-for="item of itemtwo">
+				<li>{{item.message}}</li>
+				<li>----------</li>
+			</template>
+		</ul>
+	</div>
+</body>
+</html>
+<script>
+	var vm1 = new Vue({
+		el:'#example',
+		data:{
+			items:[
+				{message:'foo'},
+				{message:'bar'},
+			],
+			itemtwo:[
+				{message:'hellow'},
+				{message:'vue.js'}
+			]
+		}
+	});
+	vm1.itemtwo.pop();
+	vm1.itemtwo.push({message:'baz'});
+	vm1.itemtwo.shift();
+	vm1.itemtwo.unshift({message:'Javascript'},{message:'Node.js'});
+</script>

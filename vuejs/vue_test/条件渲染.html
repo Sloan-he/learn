@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<!-- 判断 -->
+	<div id="example">
+		<h1 v-if='ok'>Yes</h1>
+		<h1 v-else>No</h1>
+	
+		<!-- template v-if -->
+		<template v-if="ok">
+			<p>title</p>
+			<p>paragraph</p>
+		</template>
+		<template v-else=>
+			<h1>title</h1>
+			<h2>paragraph</h2>
+		</template>
+	</div>
+	<!-- 显示隐藏 -->
+	<div id="example2">
+		<p v-show="ok">显示</p>
+		<p v-else>隐藏</p>
+	</div>
+	<div id="example3">
+		<p v-show="ok">显示</p>
+		<p v-show='!ok'>这个可能也是一个组件</p>
+	</div>
+</body>
+</html>
+<script>
+	// v-if
+	var vm1 = new Vue({
+		el:'#example',
+		data:{
+			ok:true
+		}
+	});
+
+	// v-show
+	var vm2 = new Vue({
+		el:'#example2',
+		data:{
+			ok:true
+		}
+	});
+	var vm3 = new Vue({
+		el:'#example3',
+		data:{
+			ok:true
+		}
+	});
+</script>
