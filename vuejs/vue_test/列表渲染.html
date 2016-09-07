@@ -24,6 +24,27 @@
 				<li>----------</li>
 			</template>
 		</ul>
+		<ul>
+			<li v-for="item of itemtwo" >
+				{{$index}} - {{item.message}}
+			</li>
+		</ul>
+	</div>
+	<ul id="example2">
+  		<li v-for="item of items" track-by="_uid">
+    		{{item.message }}
+    		<button @click="remove(item)">X</button>
+  		</li>
+	</ul>
+	<div id="example3">
+		<ul>
+			<li v-for="(key,val) of object">
+				{{key}} : {{val}}
+			</li>
+		</ul>
+		<ul>
+			<li v-for="n of 10">{{n+1}}</li>
+		</ul>
 	</div>
 </body>
 </html>
@@ -44,5 +65,39 @@
 	vm1.itemtwo.pop();
 	vm1.itemtwo.push({message:'baz'});
 	vm1.itemtwo.shift();
-	vm1.itemtwo.unshift({message:'Javascript'},{message:'Node.js'});
+	vm1.itemtwo.unshift({message:'React'},{message:'Javascript'},{message:'Node.js'});
+	vm1.itemtwo.splice(0,1,{message:'Mysql'});
+
+
+	var vm2 = new Vue({
+  		el: '#example2',
+  		data: {
+	    	items: [
+	      		{_uid: '1', message: 'Bar0' },
+	      		{_uid: '2',  message: 'Bar1' },
+	      		{_uid: '3',  message: 'Bar2' },
+	      		{_uid: '4',  message: 'Bar3' },
+	    	]
+  		},
+  		methods:{
+  			remove:function(item){
+  				this.items.$remove(item);
+  			}
+  		}
+	});
+
+	// 修改
+	vm2.items.$set(3,{_uid: '4', message: 'Bar4'});
+
+	// 对象
+	var vm3 = new Vue({
+		el:'#example3',
+		data:{
+			object:{
+				name:'hesy',
+				age:24,
+				sex:'man'
+			}
+		}
+	});
 </script>

@@ -25,7 +25,7 @@
 		<ul>
 			<li v-for="todo in todos">
 				<span>{{todo.text}}</span>
-				<button v-on:click="removeTodo($index)">X</button>
+				<button v-on:click="removeTodo(todo)">X</button>
 			</li>
 		</ul>
 	</div>
@@ -85,7 +85,8 @@
 				}
 			},
 			removeTodo:function(index){
-				this.todos.splice(index,1);
+				//this.todos.splice(index,1);
+				this.todos.$remove(index);
 			}
 		}
 	});
