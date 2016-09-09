@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+		<my-component></my-component>
+	</div>
+	<div id="example2">
+		<my-component></my-component>
+		<my-child></my-child>
+	</div>
+	<div id="example3">
+		<com3></com3>
+	</div>
+	<div id="example4">
+		<my-ccc></my-ccc>
+	</div>
+</body>
+</html>
+<script>
+	//定义
+	var Child = Vue.extend({
+		template:'~~~~~~'
+	});
+	var Parent = Vue.extend({
+	  template: '<div>1111</div>',
+	  components: {
+	    // <my-component> 只能用在父组件模板内
+	    'my-child': Child
+	  }
+	});
+	var MyComponent = Vue.extend({
+		template:'<div class="">A custom component!</div>',
+	});
+	//注册
+	Vue.component('my-component',MyComponent);
+
+	Vue.component('com3',{
+		template: '<div>3 custom component!</div>'
+	});
+
+	new Vue({
+		el:'#example'
+	});
+
+	var ps = new Parent({
+		el:'#example2',
+		replace:false
+	});
+
+	new Vue({
+		el:'#example3'
+	});
+
+	var Child = Vue.extend({
+            template:"<div>子集的模版</div>"
+        });
+        var Parent = Vue.extend({
+            template:"<div>父集的模版</div><my-component11></my-component>",
+            components:{   //将子集的组件注册到父集
+                'my-component11': Child  //注册到父集之后就直接使用my-component这个模版吗？
+            }
+        });
+         Vue.component('my-ccc',Parent);
+        new Vue({
+            el: '#example4'
+         
+        });
+       
+</script>
