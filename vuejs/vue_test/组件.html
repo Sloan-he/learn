@@ -6,69 +6,83 @@
 	<script src="../js/vue.js"></script>
 </head>
 <body>
-	<div id="example">
-		<my-component></my-component>
-	</div>
-	<div id="example2">
-		<my-component></my-component>
-		<my-child></my-child>
-	</div>
-	<div id="example3">
-		<com3></com3>
-	</div>
-	<div id="example4">
-		<my-ccc></my-ccc>
-	</div>
+<!-- 注册绑定 -->
+<div id="example">
+	<mycom></mycom>
+</div>
+<!-- 局部注册 -->
+<div id="example2">
+	<parent></parent>
+</div>
+--------------------
+<div id="example3"></div>
+<div id="example4">
+<mytang></mytang>
+<com3></com3>
+</div>
+<div id="example5">
+	<childmsg msg="hello!"></childmsg>	
+</div>
 </body>
 </html>
 <script>
-	//定义
-	var Child = Vue.extend({
-		template:'~~~~~~'
+	// 注册绑定
+	var mycomponent = Vue.extend({
+		template:'<div>a custom component</div>'
 	});
-	var Parent = Vue.extend({
-	  template: '<div>1111</div>',
-	  components: {
-	    // <my-component> 只能用在父组件模板内
-	    'my-child': Child
-	  }
-	});
-	var MyComponent = Vue.extend({
-		template:'<div class="">A custom component!</div>',
-	});
-	//注册
-	Vue.component('my-component',MyComponent);
-
-	Vue.component('com3',{
-		template: '<div>3 custom component!</div>'
-	});
-
+	Vue.component('mycom',mycomponent);
 	new Vue({
 		el:'#example'
 	});
 
-	var ps = new Parent({
+	// 局部注册
+	var child = Vue.extend({
+		template:'child'
+	});
+
+	var parent = Vue.extend({
+		template:'parent~<mycom></mycom>',
+		components:{
+			'mycom':child
+		}
+	});
+	new Vue({
 		el:'#example2',
+		components:{
+			'parent':parent
+		}
+	});
+	new parent({
+		el:'#example3',
 		replace:false
 	});
 
-	new Vue({
-		el:'#example3'
+	// 注册语法糖
+
+	var tang = Vue.component('mytang',{
+		template:'<div class="">注册绑定语法糖</div>'
 	});
 
-	var Child = Vue.extend({
-            template:"<div>子集的模版</div>"
-        });
-        var Parent = Vue.extend({
-            template:"<div>父集的模版</div><my-component11></my-component>",
-            components:{   //将子集的组件注册到父集
-                'my-component11': Child  //注册到父集之后就直接使用my-component这个模版吗？
-            }
-        });
-         Vue.component('my-ccc',Parent);
-        new Vue({
-            el: '#example4'
-         
-        });
-       
+	var com3 = Vue.extend({
+		template:'<div class="">局部语法糖父级</div><mycoms></mycoms>',
+		components:{
+			'mycoms':{template:'<div class="">局部语法糖子级</div>'}
+		}
+	});
+
+	new Vue({
+		el:'#example4',
+		components:{
+			'com3':com3
+		}
+	});
+
+	// props
+	Vue.component('childmsg',{
+		props:['msg'],
+		template:'<span>{{msg}}</span>'
+	});
+	new Vue({
+		el:'#example5'
+	});
 </script>
