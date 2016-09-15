@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+		<button @click="greet">greet</button>
+	</div>
+	<br>
+	<div id="example2">
+		<button @click="hi('hi',$event)">Say Hi</button>
+		<button @click="hello('hello',$event)">Say Hello</button>
+
+		<!-- 修饰符 -->
+		<!-- 在修饰符中阻止默认事件和冒泡,可以串联的写 -->
+		<p><a href="" @click.stop.prevent="click">链接</a></p>
+		<!-- 只有修饰符 -->
+		<p><form action="http://www.baidu.com" @submit.prevent><button>提交</button></form></p>
+	</div>
+	<div id="example3">
+		<input @keyup.enter="keyEenter" />
+		<input @keyup.f1="keyF1" />
+	</div>
+</body>
+</html>
+<script>
+	// 方法处理器
+	var example1 = new Vue({
+		el:'#example',
+		data:{
+			name:'Vue.js'
+		},
+		methods:{
+			greet:function(event){
+				alert('Hello ' + this.name);
+				console.log(event.target);
+			}
+		}
+	});
+
+
+	//内联语句处理器
+	var example2 = new Vue({
+		el:'#example2',
+		methods:{
+			hi:function(arg,event){
+				alert(arg);
+				console.log(event);
+			},
+			hello:function(arg){
+				alert(arg);
+				console.log(event);
+			},
+			click:function(){}
+		}
+	});
+
+
+	// 按键修饰符
+	var example3 = new Vue({
+		el:'#example3',
+		methods:{
+			keyEenter:function(){
+				alert('enter');
+			},
+			keyF1:function(){
+				alert('F1');
+			}
+		}
+	});
+
+	// 自定义按键别名
+	Vue.directive('on').keyCodes.f1 = 112;
+</script>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+		<span>message is:{{messageLazy}}</span>
+		<br>
+		lazy:<input type="text" v-model="messageLazy" lazy>
+		<br>
+		<span>message is:{{message}}</span>
+		<br>
+		<input type="text" v-model="message">
+		<br>
+		<input type="checkbox" id="checkboxid" v-model="checked">
+		<label for="checkboxid">{{checked}}</label>
+		<br>
+		<!-- 绑定多个 -->
+		<input type="checkbox" id="javascript" value="javascript" v-model="checkedNames">
+		<label for="javascript">javascript</label>
+		<input type="checkbox" id="html" value="html" v-model="checkedNames">
+		<label for="html">html</label>
+		<input type="checkbox" id="css" value="css" v-model="checkedNames">
+		<label for="css">css</label>
+		<p>checkedNames :{{checkedNames | json}}</p>
+		<br>
+		<!-- radio -->
+		<input type="radio" id="one" value="one" v-model="picked"><label for="one">One</label>
+		<input type="radio" id="two" value="two" v-model="picked"><label for="two">Two</label>
+		<p>picked:{{picked}}</p>
+		<!-- select -->
+		<select v-model="selected">
+			<option value="A" selected>A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+		</select>
+		<span>{{selected}}</span>
+		<br>
+		<select v-model="selected2">
+			<option v-for="option of valueList" :value="option.value">{{option.text}}</option>
+		</select>
+		<span>{{selected2}}</span>
+	</div>
+</body>
+</html>
+<script>
+	var example1 = new Vue({
+		el:'#example',
+		data:{
+			checkedNames:[],
+			valueList:[
+				{text:'one',value:'A'},
+				{text:'two',value:'B'},
+				{text:'three',value:'C'}
+			],
+		}
+	});
+</script>
