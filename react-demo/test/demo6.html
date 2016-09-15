@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PropTypes</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+  </body>
+</html>
+<script type="text/babel">
+  var MyTitle = React.createClass({
+    //propTypes检测组件类的属性是否符合要求
+    propTypes:{
+      title:React.PropTypes.string.isRequired,
+    },
+    getDefaultProps:function(){
+      return {
+        name:'Hello'
+      }
+    },
+    render:function(){
+      return <h1>{this.props.name} {this.props.title}</h1>
+    }
+  });
+  var data = 'world';
+  ReactDOM.render(
+     <MyTitle title={data} />,
+     document.getElementById('example')
+  )
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this.state</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+  </body>
+</html>
+<script type="text/babel">
+  var Hello = React.createClass({
+     getInitialState:function(){
+         return {opacity:1}
+     },
+     componentDidMount:function(){
+         this.timer = setInterval(function(){
+             var opacity = this.state.opacity -= .05;
+             if(opacity < 0.1){
+                 opacity = 1.0;
+             }
+             this.setState({opacity:opacity});
+         }.bind(this),100);
+     },
+      render:function(){
+         return (
+            <p style={{opacity:this.state.opacity}}>Hello {this.props.title}</p>
+         )
+      }
+  });
+  ReactDOM.render(<Hello title="world!" />,document.getElementById('example'));
+</script>

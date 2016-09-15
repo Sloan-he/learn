@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>组件</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+  </body>
+</html>
+<script type="text/babel">
+  var HelloMessage = React.createClass({
+    render:function(){
+      return <h1 className="name">Hello {this.props.name}</h1>
+    }
+  });
+
+  ReactDOM.render(
+          <HelloMessage name="hesy"   />,
+          document.getElementById('example')
+  )
+</script>

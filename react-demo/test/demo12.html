@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>this.state</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+      <script src="../build/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+  </body>
+</html>
+<script type="text/babel">
+    var RepoList = React.createClass({
+        getInitialState:functioon(){
+            return {loading:true,error:null,data:null}
+        },
+        componentDidMount:function(){
+            this.props.promise.then(
+                value => this.setState({loading:false,data:value}),
+                error => this.setState({loading:false,error:error})
+            );
+        },
+        render:function(){
+            if(this.state.loading){
+                return (<span>Loading....</span>);
+            }elese if(this.state.error !== null){
+                return (<span>Error:{this.state.error.message}</span>);
+            }else{
+
+            }
+        }
+    });
+</script>
