@@ -12,24 +12,46 @@
   </body>
 </html>
 <script type="text/babel">
-    var RepoList = React.createClass({
-        getInitialState:functioon(){
-            return {loading:true,error:null,data:null}
-        },
-        componentDidMount:function(){
-            this.props.promise.then(
-                value => this.setState({loading:false,data:value}),
-                error => this.setState({loading:false,error:error})
+    var RepList = React.createClass({
+      //设置默认状态
+      getInitialState:function(){
+          return {
+            loading:true,
+            error:null,
+            data:null
+          };
+      },
+      //执行递延,把对应的结果的给予赋值
+      componentDidMount:function(){
+        this.props.promise.then(
+          value => this.setState({loading:false,data:value}),
+          error => this.setState({loading:false,error:error})
+        );
+      },
+      //渲染页面DOM
+      render:function(){
+        if(this.state.loading){
+          return <span>Loading...</span>;
+        }else if(this.state.error !== null){
+          return <span>Error:{this.state.error.msssage}</span>
+        }else{
+          var repos = this.state.data.items;
+          var repList = repos.map(function(repo){
+            return (
+              <li><a href={repo.html_url}>{repo.name}</a>({repo.stargazers_count})<br/>{repo.description}</li>
             );
-        },
-        render:function(){
-            if(this.state.loading){
-                return (<span>Loading....</span>);
-            }elese if(this.state.error !== null){
-                return (<span>Error:{this.state.error.message}</span>);
-            }else{
-
-            }
+          });
+          return (
+            <main>
+              <h1>Most Popular JavaScript Projects in Github</h1>
+              <ol>{repList}</ol>
+            </main>
+          );
         }
+      }
     });
+    ReactDOM.render(
+      <RepList promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}></RepList>,
+      document.getElementById('example')
+    );
 </script>
