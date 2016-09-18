@@ -16,4 +16,4 @@ Express+ejs模板开发web应用
 
 
 #react
-react-demo -->React 入门实例教程
+react-demo -->React 阮一峰入门实例教程
