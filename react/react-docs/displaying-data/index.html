@@ -15,14 +15,14 @@
     var HelloWorld = React.createClass({
         render:function(){
             return (
-                <p>Hello,<input type="text" placeholder = "Your name here" />! It is {this.props.data.toTimeString()}</p>
+                    <p data-row="1">Hello,<input type="text" placeholder = "Your name here" />! It is {this.props.data.toTimeString()}</p>
             );
         }
     });
 
     setInterval(function(){
         ReactDOM.render(
-            <HelloWorld data={new Date()} />,
+            <HelloWorld data={new Date()}/>,
             document.getElementById('container')
         );
     },500);
