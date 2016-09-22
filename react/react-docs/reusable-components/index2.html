@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mixins</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+</body>
+</html>
+<script type="text/babel" src="example2.js"></script>
+<script>
+//    function Animal(){
+//        this.name = "Animal";
+//        this.showName = function(){
+//            alert(this.name);
+//        }
+//    }
+//    function Cat(){
+//        this.name = "Cat";
+//    }
+//    var animal = new Animal();
+//    var cat = new Cat();
+////    animal.showName.call(cat);
+//    animal.showName.apply(cat,[]);
+
+
+    function Animal2(name){
+        this.name = name;
+        this.showName = function(){
+            alert(this.name);
+        }
+    }
+
+    function Cat(name){
+        Animal2.call(this, name);
+    }
+
+    var cat = new Cat("Black Cat");
+    //cat.showName();
+</script>
