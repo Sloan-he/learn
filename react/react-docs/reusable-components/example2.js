@@ -1,13 +1,13 @@
 var SetIntervalMixin = {
     componentWillMount:function(){
         console.log('第一个WillMount');
-        this.intervals = [];
+        this.interval = [];
     },
     setInterval:function(){
-        this.intervals.push(setInterval.apply(null,arguments));
+        this.interval.push(setInterval.apply(null,arguments));
     },
     componentWillUnmount:function(){
-        this.intervals.forEach(clearInterval);
+        this.interval.forEach(clearInterval);
     }
 };
 
@@ -21,6 +21,7 @@ var TickTock = React.createClass({
     mixins:[SetIntervalMixinTwo,SetIntervalMixin],
     getInitialState:function(){
         return {seconds:0};
+        console.log('?');
     },
     componentWillMount:function(){
         console.log('第三个WillMount');
