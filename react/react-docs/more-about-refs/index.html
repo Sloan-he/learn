@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script type="text/babel">
+    var TextInput = React.createClass({
+        getInitialState:function(){
+            return {value:''};
+        },
+        handleClick:function(){
+            alert(1);
+        },
+        render:function(){
+            return (
+                <p>
+                    <input type="text" value={this.state.value} onClick={this.handleClick} />
+                    <a>111111</a>
+                </p>
+            );
+        }
+    });
+
+    var Tow = React.createClass({
+        render:function(){
+            return (
+                <TextInput dld="22" ref={
+                        function(input){
+                            if(input != null){
+                                console.log(input);
+                            }
+                        }
+                    }
+            />
+            );
+        }
+    });
+    ReactDOM.render(<Tow />,document.getElementById('container'));
+</script>
