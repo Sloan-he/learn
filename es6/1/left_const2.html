@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../browser.js"></script>
+</head>
+<body>
+	
+</body>
+</html>
+<script type="text/babel">
+var a = [];
+for(let i = 0;i< 10;i++){
+	a[i] = function(){
+		console.log(i);
+	}
+}
+a[9]()
+
+
+if(true){
+	tmp = 'abc';
+	console.log(tmp);
+	console.log(typeof tmp);
+	let tmp;
+}
+function bar(x=y,y=2){
+	console.log([x,y]);
+}
+bar()
+//let不允许在相同作用域内，重复声明同一个变量。
+{
+	//var a = 10;
+	//let a = 1;
+	//let 重复声明同一个变量报错。
+}
+{
+	//let a = 10;
+	//let a = 1;
+	//let 重复声明同一个变量报错。
+}
+function func(arg){
+	//let arg
+	//报错
+}
+function func(arg){
+	{
+		let arg;
+	}
+}
+</script>
