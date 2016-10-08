@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="../browser.js"></script>
+	<script src="../browser.min.js"></script>
 </head>
 <body>
 	
@@ -49,4 +49,60 @@ function func(arg){
 		let arg;
 	}
 }
+
+//块作用域
+//第一种场景，内层变量可能会覆盖外层变量。
+var tmp = new Date();
+function f(){
+	console.log(tmp);
+	if(false){
+		var tmp = 'hellow world'
+	}
+}
+f()
+
+//第二种场景，用来计数的循环变量泄露为全局变量。
+var s = 'hello';
+for(var i = 0;i < s.length;i++){
+	console.log(s[i]);
+}
+console.log(i);
+
+//let实际上为JavaScript新增了块级作用域。
+function f1(){
+	let n = 10;
+	if(true){
+		let n = 5;
+	}
+	console.log(n);
+}
+f1();
+
+/*
+ *	ES5规定，函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明。
+ *  ES6引入了块级作用域，明确允许在块级作用域之中声明函数。
+ *  ES6规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可
+ *  引用。
+ */
+
+function fx(){
+	console.log('I am outside!');
+}
+(function(){
+	if(true){
+		function fx(){
+			console.log('I am inside!');
+		}
+		fx();
+	}
+	fx();
+}());
+
+//const命令
+const foo = {};
+foo.prop = 123;
+console.log(foo.prop);
+
+//顶层对象的属性
+window.a = 1;
 </script>
