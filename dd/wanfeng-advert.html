@@ -250,4 +250,17 @@ $(function(){
 		thisParent.remove();
 	});
 });
+var relArray = [
+			["Viola", "Orsino"],
+
+			["Orsino", "Olivia"],
+
+			["Olivia", "Cesario"]
+];
+
+var relMap = relArray.reduce(function(memo, curr) {
+	memo[curr[0]] = curr[1];
+	return memo;
+}, {});
+
 </script>
