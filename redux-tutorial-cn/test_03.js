@@ -10,3 +10,5 @@ var reducer = function(...args){
 }
 
 var store1 = createStore(reducer)
+
+console.log();

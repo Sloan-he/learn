@@ -38,3 +38,21 @@ uiDesigner.xml
 
 example/
 node_modules
+.babelrc
+.gitignore
+00_introduction.js
+01_simple-action-creator.js
+02_about-state-and-meet-redux.js
+03_simple-reducer.js
+04_get-state.js
+05_combine-reducers.js
+06_dispatch-action.js
+07_dispatch-async-action-1.js
+08_dispatch-async-action-2.js
+09_middleware.js
+10_state-subscriber.js
+11_Provider-and-connect.js
+11_src/
+12_final-words.js
+README.md
+package.json
