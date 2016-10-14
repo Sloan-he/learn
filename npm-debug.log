@@ -6,11 +6,11 @@
 2 info using npm@2.15.8
 3 info using node@v4.4.7
 4 verbose run-script [ 'pretest', 'test', 'posttest' ]
-5 info pretest learn@1.0.0
-6 info test learn@1.0.0
+5 info pretest learn@1.1.0
+6 info test learn@1.1.0
 7 verbose unsafe-perm in lifecycle true
-8 info learn@1.0.0 Failed to exec test script
-9 verbose stack Error: learn@1.0.0 test: `echo "Error: no test specified" && exit 1`
+8 info learn@1.1.0 Failed to exec test script
+9 verbose stack Error: learn@1.1.0 test: `echo "Error: no test specified" && exit 1`
 9 verbose stack Exit status 1
 9 verbose stack     at EventEmitter.<anonymous> (D:\Nodejs\node_modules\npm\lib\utils\lifecycle.js:217:16)
 9 verbose stack     at emitTwo (events.js:87:13)
@@ -20,16 +20,16 @@
 9 verbose stack     at ChildProcess.emit (events.js:172:7)
 9 verbose stack     at maybeClose (internal/child_process.js:827:16)
 9 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
-10 verbose pkgid learn@1.0.0
+10 verbose pkgid learn@1.1.0
 11 verbose cwd E:\learn
 12 error Windows_NT 6.1.7601
 13 error argv "D:\\Nodejs\\node.exe" "D:\\Nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run-script" "test"
 14 error node v4.4.7
 15 error npm  v2.15.8
 16 error code ELIFECYCLE
-17 error learn@1.0.0 test: `echo "Error: no test specified" && exit 1`
+17 error learn@1.1.0 test: `echo "Error: no test specified" && exit 1`
 17 error Exit status 1
-18 error Failed at the learn@1.0.0 test script 'echo "Error: no test specified" && exit 1'.
+18 error Failed at the learn@1.1.0 test script 'echo "Error: no test specified" && exit 1'.
 18 error This is most likely a problem with the learn package,
 18 error not with npm itself.
 18 error Tell the author that this fails on your system:
