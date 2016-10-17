@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Sloan-he/learn/issues"
   },
-  "homepage": "https://github.com/Sloan-he/learn#readme"
+  "homepage": "https://github.com/Sloan-he/learn#readme",
+  "dependencies": {
+    "redux": "^3.6.0"
+  }
 }
