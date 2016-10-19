@@ -1,0 +1,63 @@
+body{
+    background: #fff;
+}
+/*类比页面样式*/
+.shopping-type-list .item{
+    height:350px;
+    width: 240px;
+    border: 1px solid transparent;
+    float: left;
+    padding: 15px 10px 0 10px;
+    transition: all .2s ease-in;
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -ms-transition: all .2s ease-in;
+    -webkit-transition: all .15s ease-in;
+}
+.shopping-type-list .item:hover{
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(85,85,85,.35) 1px 1px 10px;
+}
+.shopping-type-list .item-img{
+    width: 218px;
+    height:223px;
+}
+.shopping-type-list .item-img img{
+    width: 218px;
+    height:223px;
+}
+.shopping-type-list .item-price{
+    font-size: 24px;
+    color: #ea8000;
+    line-height: 36px;
+}
+.shopping-type-list .item-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height:18px;
+    margin-bottom: 10px;
+}
+.shopping-type-list .item-tools a{
+    float: left;
+    border: 1px solid #ddd;
+    height:22px;
+    line-height: 20px;
+    margin: 0;
+    text-align: center;
+    padding: 0 10px;
+}
+.shopping-type-list .item-tools a:hover{
+    color: #ea8000;
+    border-color: #ea8000;
+}
+.shopping-type-list .item-tools a:hover i{
+    color: #ea8000;
+}
+.shopping-type-list .item-tools i{
+    font-size: 14px;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+.shopping-type-list .item-tools .attention {
+}

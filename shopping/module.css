@@ -462,6 +462,31 @@ label.error .validate-error{
 .mainsrip-widget-label.on i{color: #fff;}
 .mainsrip-widget-label.on span{color: #fff;}
 .mainsrip-widget-label i{margin-left: 5px;}
+/*品牌*/
+.brand-group.group-row{
+	height: 115px;
+}
+.brand-group.group-row .row-g{
+	width: 950px;
+	margin-bottom:10px;
+	padding-top: 10px;
+	height:104px;
+	overflow: hidden;
+}
+.brand-group.group-row .row-g li{
+	width: 118px;
+	height:48px;
+	border: 1px solid #ddd;
+	margin: -1px -1px 0 0;
+	float: left;
+}
+.brand-group.group-row .row-g li img{
+	width: 116px;
+	height:48px;
+}
+.brand-group.brand-list.more{
+
+}
 .widget-area .mainsrip-widget-label i{
 	position: absolute;right: 2px;top: 0px;
 	-webkit-transition:transform .3s ease-in;
