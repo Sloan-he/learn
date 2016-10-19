@@ -1,0 +1,622 @@
+	<!DOCTYPE html>
+<html lang="zh" class="filter-fixed">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<!-- 隐藏状态栏/设置状态栏颜色 -->
+<meta content="telephone=no" name="format-detection" /> 
+<!-- 忽略数字自动识别为电话号码 -->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!-- 避免转码申明 -->
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
+<!-- 网页等比大小 -->
+<meta name="apple-mobile-web-app-title" content="材巴巴">
+<!-- 添加主屏后的标题 -->
+<title>采购平台-采购项目</title>
+<link rel="stylesheet" href="../../../css/allstyle.css">
+<link rel="stylesheet" href="../../../css/module.css">
+<link rel="stylesheet" media="screen and (max-device-width:1024px)" href="../../../webapp-css/webapp-module.css">
+<link rel="stylesheet" href="../../../css/gcxx.css">
+<link rel="stylesheet" media="screen and (max-device-width:1024px)" href="../../../webapp-gcxx.css">
+<script src="http://192.168.2.10:8088/cgpt/js/jquery-1.8.2.min.js"></script>
+<script src="http://192.168.2.10:8088/cgpt/js/cgjs.js"></script>
+<script src="http://192.168.2.10:8088/cgpt/js/city/AreaData_min.js"></script>
+<script src="http://192.168.2.10:8088/cgpt/js/city/Area.js"></script>
+<script src="../../../webapp-js/app-filter.js"></script>
+<script src="http://192.168.2.10:8088/cgpt/js/scrollAjax.js"></script>
+</head>
+<body>
+	<div class="head-w">
+		<div class="head-nav clearfix">
+			<div class="head-left">
+				<div class="history-go"></div>
+				<div class="logo-new"></div>
+				<div class="webapp-login">
+					<a href="">
+						<div class="icon-box"><i class="iconfont">&#xe65a;</i></div>	
+						<p>登录</p>
+					</a>	
+				</div>
+			</div>
+			<!-- 左边 -->
+			<div class="head-right">
+				<div class="nav-menu">
+					<ul>
+						<li><a class="on" href="">首页</a></li>
+						<li><a href="">企业采购</a></li>
+						<li><a href="">采购清单</a></li>
+						<li><a href="">工程信息</a></li>
+						<li><a href="">供应商</a></li>
+						<!-- <li><a href="">品牌街</a></li> -->
+					</ul>
+				</div>
+				<div class="nav-search">
+					<div class="search-list" data-state="off">
+						<div class="search-target">
+							采购单<i class="iconfont">&#xe65b;</i>
+						</div>
+						<div class="search-jt"></div>
+						<div class="search-sel">
+							<ul>
+								<li><a href="">采购</a></li>
+								<li><a href="">供应</a></li>
+								<li><a href="">企业</a></li>
+								<li><a href="">采购单</a></li>
+							</ul>
+						</div>
+					</div>
+					<input type="text" class="text">
+					<button>搜索</button>
+				</div>
+				<!-- on-login是登录后添加 -->
+				<div class="nav-login on-login">
+					<div class="login-head"></div>
+					<div class="login-msg">
+						<div class="login-jt"></div>
+						<!-- <ul>
+							<li>您好，<a class="username" href="">天广消防股份有限公司</a></li>	
+							<li><i class="cgxm iconfont">&#xe649;</i><a href="">采购项目</a></li>
+							<li><i class="cgqd iconfont">&#xe647;</i><a href="">采购清单</a></li>
+							<li><i class="exit-login iconfont">&#xe64a;</i><a href="">退出登录</a></li>
+							<li><i class="iconfont"></i><a href="">我的中标</a></li>
+							<li><i class="iconfont">&#xe62a;</i><a href="">报价记录</a></li>
+							<li><i class="iconfont">&#xe60a;</i><a href="">我的收藏</a></li>
+						</ul> -->
+						<ul>
+							<li><i class="iconfont">&#xe61b;</i><a href="">请登录</a></li>
+							<li><i class="iconfont">&#xe64e;</i><a href="">免费注册</a></li>
+							<li><i class="iconfont">&#xe64f;</i><a href="">我是采购商</a></li>
+							<li><i class="iconfont">&#xe650;</i><a href="">我是供应商</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 头部结束 -->
+	<div class="wrap">	
+		<div class="cg-box clearfix">
+			<div class="route">
+				<ul>
+					<li>当前位置：</li>
+					<li class="line">首页</li>
+					<li class="current">工程信息</li>
+				</ul>
+			</div>
+			<!-- /路径导航 -->
+			<!-- 移动端筛选 -->
+			<div class="webapp-filter gcxx">
+				<div class="widget-block">
+					<div class="filter-widget select-widget" data-float="eng-type">
+						<span class="widget-name">工程类型</span>
+					</div>
+					<div class="filter-widget select-widget" data-drop="eng-phase">
+						<span class="widget-name">工程阶段</span>
+					</div>
+					<div class="filter-widget select-widget" data-float="eng-city">
+						<span class="widget-name">工程所在地</span>
+					</div>
+				</div>
+				<div class="widget-droplist">
+					<ul class="droplist" id="eng-phase">
+						<li><a href="">规划立项</a></li>
+						<li><a href="http://baidu.com">设计阶段</a></li>
+						<li><a href="">招标投标段</a></li>
+						<li><a href="">主体施工</a></li>
+						<li><a href="">装饰装修阶段</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- 移动端筛选结束 -->			
+			<div class="left gcxx-page">
+				<div class="gcxx-mainsrp">
+					<div class="mainsrp">
+						<div class="mainsrp-crumb">
+							<li class="cat"><a href="">已选择<span>></span></a></li>
+							<li>
+								<a href="">工程类型：<b>北京、上海、广州、深圳</b></a>
+								<i class="iconfont">&#xe601;</i>
+							</li>
+							<li>
+								<a href="">结构类型：<b>框架结构、剪力墙结构、框架剪力墙结构</b></a>
+								<i class="iconfont">&#xe601;</i>
+							</li>
+							<li class="clearall">清除所有项</li>
+						</div>
+						<!-- 选中条件结束 -->
+						<div class="mainsrp-group">
+							<div class="group-row clearfix r1">
+								<div class="row-head">
+									工程类型：
+								</div>
+								<div class="row-g g1">
+									<div class="row-list">
+										<a href="">住宅建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">办公楼建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">商业及零售建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">工业建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">酒店建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">社区建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">教育及研究建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">休闲娱乐建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">医疗建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">会展建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">司法建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">农牧业设施<i class="iconfont">&#xe601;</i></a>
+										<a href="">交通建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">新市区开发项目<i class="iconfont">&#xe601;</i></a>
+										<a href="">基础设施<i class="iconfont">&#xe601;</i></a>
+										<a href="">公共事业设施<i class="iconfont">&#xe601;</i></a>
+										<a href="">石油及天然气项目<i class="iconfont">&#xe601;</i></a>
+										<a href="">开采项目<i class="iconfont">&#xe601;</i></a>
+										<a href="">其它建筑<i class="iconfont">&#xe601;</i></a>
+										<a href="">深圳<i class="iconfont">&#xe601;</i></a>
+										<a href="">天津<i class="iconfont">&#xe601;</i></a>
+										<a href="">武汉<i class="iconfont">&#xe601;</i></a>
+										<a href="">佛山<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+										<a href="">东莞<i class="iconfont">&#xe601;</i></a>
+									</div>
+									<div class="mainsrp-confirm">
+										<a href="" data-row="1" class="confirm-cancel btn btn-xs btn-white btn-radius">取消</a>
+									</div>
+								</div>
+								<div class="mainsrp-operation">
+									<a class="mainsrp-more" data-row='1'>更多<i class="iconfont">&#xe61e;</i></a>
+								</div>
+								
+							</div>
+							<div class="group-row clearfix r2">
+								<div class="row-head">
+									工程阶段：
+								</div>
+								<div class="row-list">
+									<a href="" data-row="1">规划立项</a>
+									<a href="">设计阶段</a>
+									<a href="">招标投阶段</a>
+									<a href="">主体施工</a>
+									<a href="">装饰装修阶段</a>
+								</div>
+							</div>
+						</div>
+						<!-- 筛选条件结束 -->
+						<div class="mainsrp-widget">
+							<div class="mainsrip-count">
+								工程项目筛选共<span class="orange-color">1234</span>个项目
+							</div>
+							<div class="mainsrip-widget widget-area">
+								<div class="mainsrip-widget-label">
+									<span class="label-text">所在地区</span>
+									<i class="iconfont">&#xe607;</i>	
+								</div>
+								<div class="mainsrip-widget-layer clearfix">
+									<div class="directly">
+										<a href="">所有</a>
+										<a href="">天津</a>
+										<a href="">北京</a>
+										<a href="">重庆</a>
+										<a href="">上海</a>
+									</div>
+									<ul>
+										<li><a data-id="44" href="">广东</a></li>
+										<li><a data-id="33" href="">浙江</a></li>		
+										<li><a data-id="32" href="">江苏</a></li>
+										<li><a data-id="37" href="">山东</a></li>
+										<li><a data-id="13" href="">河北</a></li>
+										<li><a data-id="41" href="">河南</a></li>
+										<li><a data-id="35" href="">福建</a></li>
+										<li><a data-id="21" href="">辽宁</a></li>
+										<li><a data-id="34" href="">安徽</a></li>
+										<li><a data-id="45" href="">广西</a></li>
+										<li><a data-id="14" href="">山西</a></li>
+										<li><a data-id="46" href="">海南</a></li>
+										<li><a data-id="15" href="">内蒙古</a></li>
+										<li><a data-id="22" href="">吉林</a></li>
+										<li><a data-id="23" href="">黑龙江</a></li>
+										<li><a data-id="42" href="">湖北</a></li>
+										<li><a data-id="43" href="">湖南</a></li>
+										<li><a data-id="36" href="">江西</a></li>
+										<li><a data-id="64" href="">宁夏</a></li>
+										<li><a data-id="65" href="">新疆</a></li>
+										<li><a data-id="63" href="">青海</a></li>
+										<li><a data-id="61" href="">陕西</a></li>
+										<li><a data-id="62" href="">甘肃</a></li>
+										<li><a data-id="51" href="">四川</a></li>
+										<li><a data-id="53" href="">云南</a></li>
+										<li><a data-id="52" href="">贵州</a></li>
+										<li><a data-id="54" href="">西藏</a></li>
+									</ul>
+								</div>
+								<div class="wideget-city">
+									<ul>
+									</ul>
+								</div>
+							</div>
+							<!-- 省市 -->
+						</div>
+						<!-- 筛选部件 -->
+					</div>
+				</div>
+				<!-- 筛选结束 -->
+				<div class="gcxx-list scroll-sum">
+					<div class="item">
+						<a class="alink" href=""></a>
+						<div class="gcxx-img">
+							<img src="http://192.168.2.10:8088/cgpt/images/gcxx-img.jpg">
+						</div>
+						<div class="gcxx-details">
+							<div class="name">
+								<a href="">江门五邑大学策文商学院大楼</a>
+								<span class="free">免费</span>
+							</div>
+							<div class="details-list">
+								<ul>
+									<li><label>工程类型：</label>教育及研究建筑</li>
+									<li><label>总投资(百万)：</label>6000</li>
+									<li><label>工程阶段：</label>设计阶段</li>
+									<li><label>所在地：</label>广东省江门市</li>
+									<li><label>发布时间：</label>2015-12-30</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<a class="alink" href=""></a>
+						<div class="gcxx-img">
+							<img src="http://192.168.2.10:8088/cgpt/images/gcxx-img.jpg">
+						</div>
+						<div class="gcxx-details">
+							<div class="name">
+								<a href="">江门五邑大学策文商学院大楼</a>
+							</div>
+							<div class="details-list">
+								<ul>
+									<li><label>工程类型：</label>教育及研究建筑</li>
+									<li><label>总投资(百万)：</label>6000</li>
+									<li><label>工程阶段：</label>设计阶段</li>
+									<li><label>所在地：</label>广东省江门市</li>
+									<li><label>发布时间：</label>2015-12-30</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<a class="alink" href=""></a>
+						<div class="gcxx-img">
+							<img src="http://192.168.2.10:8088/cgpt/images/gcxx-img.jpg">
+						</div>
+						<div class="gcxx-details">
+							<div class="name">
+								<a href="">江门五邑大学策文商学院大楼</a>
+							</div>
+							<div class="details-list">
+								<ul>
+									<li><label>工程类型：</label>教育及研究建筑</li>
+									<li><label>总投资(百万)：</label>6000</li>
+									<li><label>工程阶段：</label>设计阶段</li>
+									<li><label>所在地：</label>广东省江门市</li>
+									<li><label>发布时间：</label>2015-12-30</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<a class="alink" href=""></a>
+						<div class="gcxx-img">
+							<img src="http://192.168.2.10:8088/cgpt/images/gcxx-img.jpg">
+						</div>
+						<div class="gcxx-details">
+							<div class="name">
+								<a href="">江门五邑大学策文商学院大楼</a>
+							</div>
+							<div class="details-list">
+								<ul>
+									<li><label>工程类型：</label>教育及研究建筑</li>
+									<li><label>总投资(百万)：</label>6000</li>
+									<li><label>工程阶段：</label>设计阶段</li>
+									<li><label>所在地：</label>广东省江门市</li>
+									<li><label>发布时间：</label>2015-12-30</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<a class="alink" href=""></a>
+						<div class="gcxx-img">
+							<img src="http://192.168.2.10:8088/cgpt/images/gcxx-img.jpg">
+						</div>
+						<div class="gcxx-details">
+							<div class="name">
+								<a href="">江门五邑大学策文商学院大楼</a>
+							</div>
+							<div class="details-list">
+								<ul>
+									<li><label>工程类型：</label>教育及研究建筑</li>
+									<li><label>总投资(百万)：</label>6000</li>
+									<li><label>工程阶段：</label>设计阶段</li>
+									<li><label>所在地：</label>广东省江门市</li>
+									<li><label>发布时间：</label>2015-12-30</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="scroll-loading no-login">
+						<a href="" class="webadd-nologin"></a>
+						<span class="tip"><i class="iconfont">&#xe646;</i> 努力加载中</span>
+						<span class="error-tip">等待太久?点击<a class="orange-color" href="">刷新</a></span>
+					</div>
+				</div>
+			</div>	
+			<!-- 左侧工程信息结束 -->
+			<div class="right cgqd-guang">
+				<div class="cgqd-banner">
+					<img src="http://192.168.2.10:8088/cgpt/images/ban3.png" alt="">
+				</div>
+				<div class="cgqd-banner">
+					<img src="http://192.168.2.10:8088/cgpt/images/ban3.png" alt="">
+				</div>
+				<div class="cgqd-banner">
+					<img src="http://192.168.2.10:8088/cgpt/images/ban3.png" alt="">
+				</div>
+				<div class="cgqd-banner">
+					<img src="http://192.168.2.10:8088/cgpt/images/ban3.png" alt="">
+				</div>
+			</div>
+			<!-- /右侧广告 -->
+		</div>
+	</div>
+	<!-- <div class="wideget-city">
+		<ul>
+		</ul>
+	</div> -->
+	<div class="foot">
+		<div class="footer">
+			<p>主办单位：
+				<a href="">中国建筑学会建筑经济分会</a>
+				<a href="">广东华联软件科技有限公司</a>
+				<a class="" href="">广东华联建设投资管理股份有限公司
+				&nbsp;ICP证粤B2-20120611&nbsp;粤ICP备12024236号</a>
+			</p>
+			<p>Copyright&copy; Cost168 华联科技有限公司 All Rights Reserved版权所有 复制必究</p>
+			<div class="wj">
+				<a class="wj1" href=""></a>
+				<a class="wj2" href=""></a>
+				<a class="wj3" href=""></a>
+			</div>
+		</div>
+	</div>
+	<div class="filter-list-menu">
+		<div class="filter-list-mask"></div>
+		<div class="menu-wrap">
+			<div class="content-title">
+				<div class="title-last">
+					<span class="filter-prev" data-state='1'></span>
+				</div>
+				<div class="title-txt">请选择</div>
+				<div class="title-req"><button class="btn btn-link">确定</button></div>
+			</div>	
+			<div class="menu-content">
+				<ul class="filter-provinces filter-categorie" id="eng-city">
+					<li><span>广东</span></li>
+					<li><span>北京</span></li>
+					<li><span>上海</span></li>
+					<li><span>重庆</span></li>
+					<li><span>上海</span></li>
+					<li><span>山东</span></li>
+					<li><span>山西</span></li>
+					<li><span>湖北</span></li>
+					<li><span>湖南</span></li>
+					<li><span>广西</span></li>
+					<li><span>福建</span></li>
+					<li><span>天津</span></li>
+					<li><span>内蒙古</span></li>
+					<li><span>西藏</span></li>
+					<li><span>新疆</span></li>
+					<li><span>云南</span></li>
+					<li><span>海南</span></li>
+					<li><span>辽宁</span></li>
+				</ul>
+				<ul class="filter-city filter-categorie" data-hierarchy="1"></ul>
+				<ul class="filter-engtype filter-categorie" id="eng-type" data-hierarchy="1">
+					<li><span>住宅信息</span></li>
+					<li><span>办公楼建筑</span></li>
+					<li><span>商业及零售建筑</span></li>
+					<li><span>工业建筑</span></li>
+					<li><span>酒店建筑</span></li>
+					<li><span>社区建筑</span></li>
+					<li><span>教育及研究建筑</span></li>
+					<li><span>休闲娱乐建筑</span></li>
+					<li><span>医疗建筑</span></li>
+					<li><span>会展建筑</span></li>
+					<li><span>司法建筑</span></li>
+					<li><span>农牧业设施</span></li>
+					<li><span>交通建筑</span></li>
+					<li><span>新市区开发项目</span></li>
+					<li><span>基础设施</span></li>
+					<li><span>公共事业设施</span></li>
+					<li><span>石油及天然气项目</span></li>
+					<li><span>开采项目</span></li>
+					<li><span>其他建筑</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+function checkScroll(){
+	/*
+	 *   beforeSend:显示加载提示语,并且把错误提示隐藏
+	 *   success:请求回来的数据拼装成HTML结构并且加到页面上面
+	 *   error:请求超时把加载提示语隐藏起来,并且把点击加载按钮显示     
+	 */
+	$.ajax({
+		url:'b.json',
+		dataType:'json',
+		timeout:60000,
+		beforeSend:function(){
+			$('.scroll-loading').show();
+			$('.error-tip').hide();
+		},
+		success:function(data){
+			$('.scroll-loading').hide();
+			var html = '';
+			$.each(data,function(i,e){
+				html += '<div class="item">'
+				html +=	'<a class="alink" href=""></a>'
+				html += '<div class="gcxx-img"><img src="' + e.img + '"></div>'
+				html += '<div class="gcxx-details">'
+				html += '<div class="name"><a href="">' + e.name + '</a></div>'		
+				html += '<div class="details-list"><ul>'
+				html += '<li><label>工程类型：</label>' + e.type + '</li>'			
+				html += '<li><label>总投资(百万)：</label>' + e.money + '</li>'
+				html += '<li><label>工程阶段：</label>' + e.phase + '</li>'
+				html += '<li><label>所在地：</label>' + e.city + '</li>'
+				html += '<li><label>发布时间：</label>' + e.time + '</li>'
+				html += '</ul></div>'
+				html += '</div>'				
+				html += '</div>'				
+			});
+			$('.scroll-loading').before(html);
+		},
+		error:function(){
+			$('.scroll-loading .tip').hide();
+			$('.error-tip').show();
+		}
+	});
+}
+	$(function(){
+		var rowHeight = 34;
+		//34是一行的高度
+		// 获取高度判断是否显示更多
+		$('.group-row').each(function(){
+			var nowRow = $(this);
+			if(nowRow.find('.row-list').height() > rowHeight){
+				nowRow.find('.mainsrp-more').show();
+			}else{
+				nowRow.find('.mainsrp-more').hide();
+			}
+		});
+
+		//显示更多过滤条件
+		$('.mainsrp-more').click(function(event){
+			event.preventDefault();
+			var flag = $(this).data('row');
+			var height = $('.g' + flag).height();
+			$('.r' + flag).height(height).addClass('hover')
+				.children('.row-head').addClass('hover');
+			$(this).hide();
+		});
+
+		//退出更多恢复默认状态
+		$('.confirm-cancel').click(function(event){
+			event.preventDefault();
+			var cancelFlag = $(this).data('row');
+			$('.r' + cancelFlag).height(rowHeight).removeClass('hover')
+				.children('.row-head').removeClass('hover');;
+			$('.r' + cancelFlag + ' .row-list a').removeClass('on').off('click.addon');
+			$('.mainsrp-more[data-row='+ cancelFlag +']').show();
+		});
+	})
+
+	$(function(){
+		//显示省份
+		$('.widget-area').on('mouseenter mouseleave',function(event){
+			if(event.type == 'mouseenter'){
+				$(this).addClass('widget-checked');
+				$(this).children('.mainsrip-widget-layer').show();
+			}else{			
+				$(this).children('.mainsrip-widget-layer').hide();
+				$(this).removeClass('widget-checked');
+			}
+		});
+
+		//动态加载城市
+		var $cityBox = $('.wideget-city');
+		var areaId,count,cityList;
+		$('.widget-area .mainsrip-widget-layer li').on('mouseenter mouseleave',function(event){
+			cityList = '';
+			//判断事件
+			if(event.type == 'mouseenter'){
+				$cityBox.html('');
+				areaId = String($(this).find('a').data('id'));
+				count = String(city(sub_array,areaId));
+				$.each(sub_array[areaId],function(n,value){
+					if(value && n > 0){
+						cityList += "<li><a href=''>" + value + "</a></li>";
+						return cityList;
+					}
+				});
+				$cityBox.append(cityList);
+				$cityBox.show().css({
+					left:$(this).position().left + 64,
+					top:$(this).position().top + 40
+				})
+			}else{
+				$cityBox.hide()
+			}	
+		});
+		// 移动到城市选择保持显示
+		$cityBox.on('mouseenter mouseleave',function(event){
+			if(event.type == 'mouseenter'){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+			
+		});
+	})
+
+	$(function(){
+
+		// 加载城市
+		$('.filter-provinces li').on('click',function(){
+			var thisObj = $(this); 
+			$.ajax({
+				url:'area.json',
+				dataType:'json',
+				success:function(data){
+					var cityLi = '';
+					$.each(data,function(i,n){
+						cityLi += '<li><span>' + n + '</span></li>';
+					});
+					$('.filter-prev').data('state',2);
+					$('.filter-city').empty().append(cityLi).show();
+					$('.filter-provinces').hide();
+					thisObj.addClass('checked').siblings().removeClass('checked');
+				}
+			})
+		});
+
+	});
+</script>
