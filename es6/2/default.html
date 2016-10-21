@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>默认值</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+   //默认值
+    var [foo = true] = [];
+    console.log(foo)
+
+    function f(){
+        console.log('aaa')
+    }
+    let [x=f()] = [1]
+    console.log(x)
+
+   //默认值可以引用解构赋值的其他变量，但该变量必须已经声明。
+    let [a = 1,b = a] = []
+    let [c = 1,d = c] = [2]
+    let [e = 1,f = e] = [1,2]
+</script>

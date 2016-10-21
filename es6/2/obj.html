@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    var {foo,bar} = {foo:'aaa',bar:'bbbb'};
+    console.log(foo,bar);
+
+    var {one,two,three} = {two:'2',one:'1'};
+    console.log(one,two,three);
+
+    //变量名与属性名不一致
+    var {first:f,last:l} = {first:'hello',last:'world'};
+    console.log(f,l);
+
+    //嵌套结构
+    var {p:[x,{y}]} = {p:['Hello',{y:'world'}]};
+    console.log(x,y);
+
+    var node = {
+        loc:{
+            start:{
+                line:1,
+                column:5
+            }
+        }
+    };
+    var {loc:{start:{line}}} = node;
+
+    let obj = {};
+    let arr = [];
+    ({foo:obj.prop,bar:arr[0]} = {foo:123,bar:true});
+    console.log(obj,arr)
+
+    //默认值
+    var {h = 3} = {}
+    console.log(h)
+    var {i:g = 5} = {}
+    console.log(g)
+
+    let { log, sin, cos } = Math;
+
+    var arrs = [1,2,3]
+    var {0:first,[arrs.length -1]:last} = arrs
+    console.log(first,last)
+</script>
+

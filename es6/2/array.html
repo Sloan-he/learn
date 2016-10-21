@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    //简单的结构赋值
+    var [a,b,c] = [1,2,3];
+    //嵌套数组
+    let [foo,[[bar],baz]] = [1,[[2],3]]
+    console.log(foo,bar,baz)
+
+    let [,,third] = ['foo','bar','baz']
+    console.log(third);
+
+    let[head,...tail] = [1,2,3,4]
+    console.log(head,tail)
+
+    let[x,y,...z] = ['a']
+    console.log(x,y,z)
+
+</script>

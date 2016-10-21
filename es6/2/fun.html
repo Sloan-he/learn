@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    function add([x,y]){
+        console.log(x+y)
+    }
+    add([1,2])
+
+    function move({x,y} = {x:0,y:0}){
+        console.log([x,y])
+    }
+    move({x:3,y:8})
+    move({x:3})
+    move({})
+    move();
+</script>
