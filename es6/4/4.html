@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+
+    var as = 'aaa_aa_a';
+    var r1 = /a+/g;
+    var r2 = /a+/y;
+    console.log(r1.exec(as))
+    console.log(r2.exec(as))
+
+    console.log(r1.exec(as))
+    console.log(r2.exec(as))
+    //lastIndex
+    const REGEXG = /a/g;
+    REGEXG.lastIndex = 3;
+    const match = REGEXG.exec('xaya');
+    console.log(match)
+    console.log(match.index)
+
+
+    const REGEXY = /a/y;
+    REGEXY.lastIndex = 2;
+    console.log(REGEXY.exec('xaya'));
+    REGEXY.lastIndex = 3;
+    const matchs = REGEXY.exec('xaya');
+    console.log(matchs)
+    console.log(matchs.index)
+
+    //split
+    console.log('x##'.split(/#/y))
+    console.log('##x'.split(/#/y))
+
+    //replace
+    const RegexReplace = /a/yg;
+    console.log('aaxa'.replace(RegexReplace,'-'))
+</script>
