@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    //console.log(String.raw `Hi \n${2+3}!`)
+
+    String.raw = function (strings, ...values) {
+        var output = "";
+        console.log(strings,values)
+        for (var index = 0; index < values.length; index++) {
+            output += strings.raw[index] + values[index];
+            console.log(index,strings.raw[index],values[index])
+        }
+        console.log(index)
+        output += strings.raw[index]
+        console.log(output)
+        return output;
+    }
+    String.raw `${2+3}${2+3}Hi \n`
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    //普通字符串
+    var one = `In JavaScript '\n' is a line-feed.`
+    //多行字符串
+    var two = `In Javascript this is
+    not legal`
+    console.log(one)
+    console.log(two)
+
+    //字符串嵌入变量
+    var name = 'Bob',time = 'today'
+    console.log(`Hello ${name},how are you ${time}`)
+
+
+    //模板字符串嵌套
+    const tmpl = addrs =>{
+        return `
+        <table>
+            ${addrs.map(addr =>`
+                <td><td>${addr.first}</td></tr>
+                <td><td>${addr.last}</td></tr>
+            `).join('')}
+        <table>
+    `}
+    const data = [
+        { first: '<Jane>', last: 'Bond' },
+        { first: 'Lars', last: '<Croft>' },
+    ];
+
+    console.log(tmpl(data));
+
+    //如果需要引用模板字符串本身,在需要时执行,可以像下面这样写.
+    let str = 'console.log  ' + '`Hello ${name}!`';
+    let func = new Function('name', str);
+    func('Jack') // "Hello Jack!"
+
+    let str2 = '(name) => `Hello ${name}!`';
+    let func2 = eval.call(null, str2);
+    func2('Jack') // "Hello Jack!"
+</script>

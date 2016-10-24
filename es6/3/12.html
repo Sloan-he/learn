@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    console.log `123`
+
+    var a = 5;
+    var b = 10;
+
+    function tag(s, v1, v2) {
+        console.log(s[0]);
+        console.log(s[1]);
+        console.log(s[2]);
+        console.log(v1);
+        console.log(v2);
+
+        return "OK";
+    }
+
+    tag`Hello ${ a + b } world ${ a * b}`
+
+    var total = 30;
+    var msg = passthru `The total is ${total} (${total*1.05} with tax)`;
+
+//    function passthru(literals){
+//        var result = '';
+//        var i = 0;
+//        console.log(literals)
+//        console.log(arguments)
+//        while(i < literals.length){
+//            result += literals[i++];
+//            if(i < arguments.length){
+//                result += arguments[i];
+//            }
+//        }
+//        return result;
+//    }
+
+    //rest参数写法
+    function passthru(literals,...values){
+        var output = ''
+        for(var index = 0;index < values.length;index++){
+            output += literals[index] + values[index];
+            console.log(index,output)
+        }
+        output += literals[index]
+        console.log(output)
+    }
+    msg
+
+    //应用
+    //过滤HTML字符串,防止恶意内容
+
+    function SaferHTML(templateData){
+        var s = templateData[0];
+        console.log(templateData)
+        for(var i = 1;i < arguments.length;i++){
+            var arg = String(arguments[i]);
+            s += arg.replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;");
+            s += templateData[i];
+        }
+        console.log(s);
+        return s;
+    }
+    var sender = "<\s\cr\i\pt>alert('abc')</\s\cr\i\pt>";
+    var message = SaferHTML`<p>${sender} has sent you a message.</p>`;
+    msg
+
+
+</script>

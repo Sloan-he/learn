@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    var regexobj = new RegExp('xyz','i');
+    var regex = /xyz/i;
+    var regexobj2 = new RegExp(/xyz/ig);
+
+    var regexEs6 = new RegExp(/xyz/ig,'i');
+
+    console.log('xyz~xyz'.match(regexEs6));
+</script>

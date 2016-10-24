@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    var s = '𠮷'
+    console.log(/^.$/.test(s))
+    console.log(/^.$/u.test(s))
+
+    console.log('量词')
+    console.log(/a{2}/.test('aa'))
+    console.log(/a{2}/u.test('aa'))
+    console.log(/𠮷{2}/.test('𠮷𠮷'))
+    console.log(/𠮷{2}/u.test('𠮷𠮷'))
+</script>
