@@ -42,4 +42,27 @@
     //replace
     const RegexReplace = /a/yg;
     console.log('aaxa'.replace(RegexReplace,'-'))
+
+    //match
+    console.log('a1a2a3'.match(/a\d/yg))
+
+    const TOKEN_Y = /\s*(\+|[0-9]+)\s*/y
+    const TOKEN_G  = /\s*(\+|[0-9]+)\s*/g;
+
+    function tokenize(TOKEN_REGEX,str){
+        let result = [];
+        let match;
+        while(match = TOKEN_REGEX.exec(str)){
+            result.push(match[1]);
+        }
+        console.log(result);
+        return result;
+    }
+    tokenize(TOKEN_Y, '3x + 4')
+    tokenize(TOKEN_G, '3x + 4')
+
+    var r = /hello\d/y;
+    console.log(r.sticky);
+
+
 </script>
