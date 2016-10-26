@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    console.log('123',Number.isFinite(123));
+    console.log('0.5',Number.isFinite(0.5));
+    console.log('0',Number.isFinite(0));
+    console.log('-5',Number.isFinite(-5));
+    console.log('\'123\'',Number.isFinite('123'));
+    console.log('NaN',Number.isFinite(NaN));
+    console.log('\'foo\'',Number.isFinite('foo'));
+    console.log('bool',Number.isFinite(true));
+    console.log('Infinity',Number.isFinite(Infinity));
+
+    Number.isNaN(NaN) // true
+    Number.isNaN(15) // false
+    Number.isNaN('15') // false
+    Number.isNaN(true) // false
+    Number.isNaN(9/NaN) // true
+    Number.isNaN('true'/0) // true
+    Number.isNaN('true'/'true') // true
+
+    isFinite(25) // true
+    isFinite("25") // true
+    Number.isFinite(25) // true
+    Number.isFinite("25") // false
+
+    isNaN(NaN) // true
+    isNaN("NaN") // true
+    Number.isNaN(NaN) // true
+    Number.isNaN("NaN") // false
+</script>

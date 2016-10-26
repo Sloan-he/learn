@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+<p>13</p>
+<p>14</p>
+<p>15</p>
+<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+</body>
+</html>
+<script type="text/babel">
+    let arrayLike = {
+        '0': 'a',
+        '1': 'b',
+        '2': 'c',
+        length: 3
+    };
+
+    // ES6的写法
+    let arr2 = Array.from(arrayLike);
+    console.log(arr2)
+
+    let ps = document.querySelectorAll('p');
+    var psArry = Array.from(ps)
+    console.log(ps)
+    console.log(psArry)
+
+    function foo(a1,a2,a3,a4,a5){
+        var args = Array.from(arguments);
+        console.log(arguments);
+        console.log(args);
+    }
+
+    foo('a',function (){},[9,8,7,6],{foo:11},1);
+    var dd = 1
+    var arrMap = Array.from([1,2,3],(x,y) => x*x)
+    console.log(arrMap)
+
+    let spans = document.querySelectorAll('span');
+
+    let names1 = Array.from(spans,s => s.textContent)
+
+</script>
