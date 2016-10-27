@@ -53,7 +53,22 @@
     console.log(arrMap)
 
     let spans = document.querySelectorAll('span');
-
     let names1 = Array.from(spans,s => s.textContent)
+    console.log(names1)
 
+    console.log(Array.from([1, , 2, , 3], (n) => n || 0))
+
+    function typesOf(){
+        console.log(Array.from(arguments,values => typeof values))
+    }
+
+    typesOf(null,[],NaN,'aaa');
+
+    function fromThis(){
+        console.log(arguments);
+        var arr12 = Array.from(arguments,((x,this) => x,10))
+        console.log(arr12);
+    }
+
+    fromThis(10,20,45,77,89,0);
 </script>
