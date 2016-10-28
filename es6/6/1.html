@@ -66,9 +66,11 @@
 
     function fromThis(){
         console.log(arguments);
-        var arr12 = Array.from(arguments,(x) => x+1);
+        var arr12 = Array.from(arguments,function(x){return x - this},10);
         console.log(arr12);
     }
 
     fromThis(10,20,45,77,89,0);
+
+
 </script>
