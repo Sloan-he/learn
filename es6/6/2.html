@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    console.log(Array.of(3,11,8))
+
+    function ArrayOf(){
+        var newArray =  [].slice.call(arguments);
+        console.log(newArray);
+    }
+
+    ArrayOf(1,2,3,4,null,undefined);
+
+</script>

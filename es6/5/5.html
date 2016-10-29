@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    console.log(Number.EPSILON)
+    console.log(0.1+0.2-0.3 < Number.EPSILON)
+
+    function withinErrorMargin(left,right){
+        console.log(Math.abs(left - right))
+        console.log(Math.abs(left - right) < Number.EPSILON)
+        return Math.abs(left - right) < Number.EPSILON;
+    }
+
+    withinErrorMargin(0.1+0.2,0.3)
+    withinErrorMargin(0.2 + 0.2, 0.3)
+</script>

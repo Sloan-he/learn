@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    console.log(Math.pow(2,53) === Math.pow(2,53) + 1)
+
+    console.log(Math.pow(2,53))
+
+    console.log(Number.MAX_SAFE_INTEGER === Math.pow(2,53) - 1)
+    console.log(Number.MAX_SAFE_INTEGER,Math.pow(2,53) - 1)
+
+    console.log('Number.isSafeInteger')
+    console.log(Number.isSafeInteger('a'))
+    console.log(Number.isSafeInteger('123'))
+    Number.isSafeInteger(3) // true
+    Number.isSafeInteger(1.2) // false
+    Number.isSafeInteger(9007199254740990) // true
+    Number.isSafeInteger(9007199254740992) // false
+</script>

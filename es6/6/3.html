@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    var arr = [1,2,3,4,5]
+//    console.log(arr.copyWithin(0,3))
+    console.log(arr.copyWithin(4,-2,-1))
+    console.log([].copyWithin.call({length:5,3:1},0,3))
+    var i32a = new Int32Array([1, 2, 3, 4, 5]);
+    console.log(i32a.copyWithin(0, 2))
+</script>
