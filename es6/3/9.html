@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用途</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    console.log('x'.padStart(5,'ab'))
+    console.log('x'.padStart(4,'ab'))
+    console.log('x'.padEnd(5,'ab'))
+    console.log('x'.padEnd(4,'ab'))
+    //没指定内容
+    console.log('x'.padEnd(4,))
+    //补全后超出指定内容
+    console.log('x'.padEnd(5,'0123456789'))
+
+    //常用于补全指定位数
+    '1'.padStart(10, '0') // "0000000001"
+    '12'.padStart(10, '0') // "0000000012"
+    '123456'.padStart(10, '0') // "0000123456"
+    //提示字符串格式。
+    '12'.padStart(10, 'YYYY-MM-DD') // "YYYY-MM-12"
+'09-12'.padStart(10, 'YYYY-MM-DD') // "YYYY-09-12"
+</script>

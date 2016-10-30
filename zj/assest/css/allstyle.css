@@ -28,7 +28,7 @@ ul,li{
     list-style: none;
 }
 .jz-form-control{
-    height:1.7rem;padding: .3rem 12px;line-height: 1.4;color: #8a8a8a;
+    height:1.5rem;padding: .2rem 12px;line-height: 1.4;color: #8a8a8a;
     background-color: #fff;border: 1px solid #ddd;vertical-align: middle;
     box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
     transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
@@ -38,7 +38,7 @@ ul,li{
     -ms-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 .jz-btn{
-    display:inline-block;padding:.3rem .6rem;font-size:.7rem;font-weight:400;line-height:1.4;
+    display:inline-block;padding:.2rem .6rem;font-size:.7rem;font-weight:400;line-height:1.4;
     text-align: center;vertical-align:middle;white-space:nowrap;cursor:pointer;
     border: 1px solid transparent;text-decoration:none;font-family: "microsoft yahei";
     -moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;
@@ -188,4 +188,44 @@ ul,li{
     text-align: center;
     font-size: .9rem;
 
+}
+.report-form-page{
+    padding-top: .625rem;
+}
+.report-form-tip{
+    font-size: .7rem;
+    line-height: 1.4rem;
+    text-indent: 2em;
+}
+.report-form-tip span{
+    color: #f20000;
+}
+.report-form .row{
+    margin-bottom: .5rem;
+}
+.report-form label.form-name{
+    width: 4.25rem;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+}
+.report-form label.form-name span{
+    color: #f20000;
+}
+.report-form .jz-form-control{
+    width: 9.75rem;
+}
+.report-form input[type=radio]{
+    margin-top: 2px;
+}
+.report-form .middle{
+    vertical-align: middle;
+    height: 16px;
+    display: inline-block;
+}
+.report-form textarea{
+    height: 10rem;
+}
+.report-form-btn{
+    width: 4rem;
 }
