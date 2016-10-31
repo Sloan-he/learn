@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    for(let index of ['a','b'].keys()){
+        console.log(index);
+    }
+    for(let [index,elem] of ['a','b','c'].entries()){
+        console.log(index,elem);
+    }
+//    for(let elem of ['a','b','c'].values()){
+//        console.log(elem);
+//    }
+
+    let letter = ['a','b','c'];
+    let entries = letter.entries();
+    console.log(entries)
+    console.log(entries.next().value)
+    console.log(entries.next().value)
+    console.log(entries.next().value)
+</script>
