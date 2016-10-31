@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用途</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    // 交换变量
+    var x = 10;
+    var y = 5;
+    [x,y] = [y,x];
+    console.log(x,y);
+    
+
+    //函数中返回多个值
+    function example(){
+        return [1,2,3];
+    }
+    var [a,b,c] = example();
+    console.log(a,b,c)
+
+    function example2() {
+      return {
+        foo: 1,
+        bar: 2
+      };
+    }
+    var { foo, bar } = example2();
+
+    //函数参数定义
+    function f([g,i,j]){}
+    f([1,2,3])
+    function f1({z,v,n}){}
+    f1({v:1,z:2,n:3})
+
+
+    //提取JSON数据
+    var jsonDate = {
+        id:12,
+        status:'ok',
+        data:[867,5309]
+    };
+
+    let {id,status,data:number} = jsonDate
+    console.log(id,status,number);
+
+
+    //函数参数的默认值
+    function ajax(url,{ansy = true,beforeSend = function(){},cache = true,}){
+        console.log(url,ansy,beforeSend,cache)
+    }
+    ajax('http://192.168.2.1',{cache:false})
+
+
+    //遍历Map结构
+    var map = new Map()
+    map.set('first','hello')
+    map.set('second','world')
+
+    for(let [key,value] of map){
+        console.log(key,value);
+    } 
+</script>
