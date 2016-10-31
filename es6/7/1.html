@@ -10,6 +10,29 @@
 </body>
 </html>
 <script type="text/babel">
-    console.log([,'c',2].map(x => 1));
+   function log(x,y='World'){
+       console.log(x,y);
+   }
+    log('Hello');
+    log('Hello','China');
+    log('Hello','');
 
+    function foo(url,{body='vv',method='GET'} = {}){
+        console.log(body,method);
+    }
+   foo('...')
+   foo('...',{method:'post'})
+
+    function bar([a=1,b=2,c=10] = []){
+        console.log(a,b,c);
+    }
+   bar([10,,5]);
+
+
+    function f(y,x=1){
+        console.log(x+y);
+    }
+    f(2,5);
+
+    console.log((function(a){}).length)
 </script>
