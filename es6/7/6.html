@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+</body>
+</html>
+<script type="text/babel">
+    var f = v => v;
+
+    var f2 = () => 5;
+
+    var sum = (n1,n2) => console.log(n1+n2);
+    sum(1,2);
+
+    var getTempItem = id => ({id:id,name:'Temp'});
+    console.log(getTempItem(11));
+
+    const full = ({first,last}) => console.log(first + ' ' + last);
+    var person = {first :'hello',last:'world'};
+    full(person);
+
+    [1,2,3].map(x => console.log(x*x));
+
+    let values = [10,22,9,0,14,18,39,46,100,-99];
+    var result = values.sort((a,b) => a-b);
+    console.log(result);
+
+
+</script>

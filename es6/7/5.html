@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<script>
+    var OOO = {
+        color: "#cd0000",
+        element: '11111',
+        events: function() {
+            document.getElementById('dv').addEventListener("click", function(e) {
+                //this.element.style.color = this.color;
+                console.log('events',this);
+            });
+            console.log(this);
+            return this;
+        },
+        init: function() {
+            this.events();
+        }
+    };
+</script>
+<body>
+<button id="dv" onclick="OOO.events()">11111</button>
+</body>
+</html>
+<script type="text/babel">
+    function foo(){}
+    console.log(foo.name)
+
+    const bar = function baz() {};
+    console.log(bar.name);// "baz"
+
+    console.log((new Function).name) // "anonymous"
+
+    console.log(foo.bind({}).name)
+    console.log((function(){}).bind({}).name)
+</script>
