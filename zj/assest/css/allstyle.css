@@ -174,7 +174,7 @@ ul,li{
     font-size: .75rem;
 }
 .tip-box .tip-img{
-    background: url(../images/prompt.png) no-repeat;
+    background: url(../images/prompt.png) no-repeat center center;
     background-size: contain;
     padding: .625rem;
     width: 12rem;
@@ -228,4 +228,53 @@ ul,li{
 }
 .report-form-btn{
     width: 4rem;
+}
+.jdk-page{
+    padding: .625rem;
+}
+.jdk-page .title{
+    line-height: 2rem;
+    font-size: .8rem;
+}
+.jdk-page .main p{
+    text-indent: 2em;
+    font-size: .7rem;
+    line-height: 1.5rem;
+}
+.jdk-page .main h4{
+    font-size: .9rem;
+}
+.jdk-page .slogan{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.jdk-page .slogan h3{
+    color: #025984;
+    text-align: center;
+    font-size: .9rem;
+    line-height: 1.5rem;
+    padding-top: .625rem;
+}
+.jdk-page .slogan p{
+    text-align: center;
+    font-size: .7rem;
+    line-height: 1.3rem;
+}
+.jdk-page .slogan .phone{
+    width:.7rem;
+    height: .7rem;
+    display: inline-block;
+    background: url(../images/phone.png) no-repeat;
+    background-size: contain;
+    margin-right: .5rem;
+    vertical-align: middle;
+}
+.jdk-page-content .sign{
+    text-align: center;
+}
+.jdk-page-content .sign img{
+    width: 5.75rem;
+    height: 5.75rem;
+    max-width: 204px;
+    max-height: 204px;
 }
