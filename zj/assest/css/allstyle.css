@@ -56,7 +56,9 @@ ul,li{
 .clearfix:before{content: "";display: table;}
 .row:after{content: "";display: table;clear: both;}
 .row:before{content: "";display: table;}
-
+.text-right{
+    text-align: right;
+}
 
 
 .wrap{
@@ -136,9 +138,13 @@ ul,li{
     text-align: center;
 }
 .article-page img{
-    max-width: 14.75rem;
-    width: auto;
-    height:auto;
+    /*max-width: 14.75rem;*/
+    /*width: auto;*/
+    /*height:auto;*/
+    width: 5.75rem;
+    height: 5.75rem;
+    max-width: 204px;
+    max-height: 204px;
 }
 @media screen and (min-width: 720px){
 .article-page img{
@@ -235,6 +241,7 @@ ul,li{
 .jdk-page .title{
     line-height: 2rem;
     font-size: .8rem;
+    text-align: center;
 }
 .jdk-page .main p{
     text-indent: 2em;
@@ -277,4 +284,73 @@ ul,li{
     height: 5.75rem;
     max-width: 204px;
     max-height: 204px;
+}
+.jdk-page-content{
+    padding-bottom: .625rem;
+    border-bottom: 1px dashed #001f3f;
+}
+.mbk-title{
+    text-align: center;
+    font-size: .8rem;
+    line-height: 1.8rem;
+}
+.mbk-content .mbk-main{
+    text-indent: 2em;
+    font-size: .7rem;
+    line-height: 1.5rem;
+}
+.mbk-date{
+    float: right;
+}
+.mbk-text{
+    border: none;
+    border-bottom: 1px solid #ddd;
+    background: transparent;
+    height:1.25rem;
+}
+.mbk-text:focus{
+    outline:none;
+}
+.mbk-content{
+    padding:.625rem 0;
+    border-bottom: 1px dashed #001f3f;
+}
+.company-info-content label.name{
+    width: 4.5rem;
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+}
+.company-info-content p{
+    padding-top: .625rem;
+}
+.company-info-content{
+    padding-bottom: .625rem;
+    border-bottom: 1px dashed #001f3f;
+}
+.company-title{
+    font-size: .7rem;
+    line-height: 1.2rem;
+    margin-top: .625rem;
+}
+.pj-btn{
+    width: 7rem;
+    height:1.7083333rem;
+    font-size: .75rem;
+}
+.pj-content label.name{
+    width: 4.5rem;
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle;
+}
+.pj-content .row{
+    margin-top: .625rem;
+}
+.btn-content{
+    text-align: center;
+    margin-top: .625rem;
+}
+.pj-content .row .jz-form-control{
+    width: 9.75rem;
 }
