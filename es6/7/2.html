@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+    function add(...values){
+        let sum = 0;
+        for(var val of values){
+            sum += val;
+        }
+        console.log(...values)
+        return sum;
+    }
+    add(2,5,3);
+
+    function push(array,...items){
+        items.forEach(function(item,index,arr){
+            array.push(item);
+        });
+        console.log(array);
+    }
+
+    var a= [];
+    push(a,1,2,3);
+
+    console.log((function(a,...b){}).length);
+</script>

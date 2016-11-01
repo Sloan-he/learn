@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../browser.min.js"></script>
+</head>
+<body>
+<div class=""></div>
+<div class=""></div>
+<div class=""></div>
+</body>
+</html>
+<script type="text/babel">
+    function push(array,...val){
+        array.push(...val);
+        console.log(array);
+    }
+
+    function add(x,y,...numbers){
+        console.log(x,y,...numbers)
+        console.log(x + y);
+    }
+
+    var numbers = [4,38];
+    add(...numbers);
+
+    var array = [];
+    var items = [1,2,3,4,6]
+    push(array,1,2,3,4,6)
+</script>
