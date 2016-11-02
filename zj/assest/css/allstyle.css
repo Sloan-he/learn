@@ -120,6 +120,7 @@ ul,li{
 .article-page .title{
     font-size: 1.2rem;
     line-height: 2rem;
+    text-align: center;
 }
 .article-page .time{
     font-size:.7rem;
@@ -196,7 +197,7 @@ ul,li{
 
 }
 .report-form-page{
-    padding-top: .625rem;
+    padding: .625rem;
 }
 .report-form-tip{
     font-size: .7rem;
@@ -242,6 +243,7 @@ ul,li{
     line-height: 2rem;
     font-size: .8rem;
     text-align: center;
+    font-weight: 900 ;
 }
 .jdk-page .main p{
     text-indent: 2em;
