@@ -6,6 +6,10 @@ import App from './components/App'
 import reducer from './reducers'
 
 const store = createStore(reducer)
+store.subscribe(() =>
+  console.log(store.getState())
+)
+
 
 render(
   <Provider store={store}>
