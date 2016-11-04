@@ -4,11 +4,9 @@
 
 import {combineReducers} from 'redux'
 import todos from './todos'
-import visibleTodoList from './visibleTodoList'
 
 const todoApp = combineReducers({
-  todos,
-  visibleTodoList
+  todos
 })
 
 export default todoApp

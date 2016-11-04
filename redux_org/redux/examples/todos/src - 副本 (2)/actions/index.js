@@ -22,6 +22,6 @@ export const deleteTodo = (id) =>({
 })
 
 export const visibleTodoList = (filter) =>({
-	type:'SET_VISIBLE_FILTER',
+	type:'SET_VISIBLE_filter',
 	filter
 })

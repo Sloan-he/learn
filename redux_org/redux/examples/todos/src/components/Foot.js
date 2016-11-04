@@ -3,11 +3,17 @@
  */
 
 import React,{Component} from 'react'
+import Link from './Link'
 
 class Foot extends Component{
   render(){
     return(
-      <div>底部</div>
+      <div>
+      	Show:{' '}
+      	<Link {...{filter:'SHOW_ALL',content:'All'}} />
+      	<Link {...{filter:'SHOW_ACTIVE',content:'Active'}} />
+      	<Link {...{filter:'SHOW_COMPLETED',content:'Completed'}} />
+      </div>
     )
   }
 }
