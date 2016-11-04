@@ -31,6 +31,10 @@ const todos = (state = [], action) => {
       return state.map(t =>
         todo(t, action)
       )
+    case 'DELETE_TODO':
+      return state.map((t,i,arr)=>{
+        console.log(1);
+      })
     default:
       return state
   }

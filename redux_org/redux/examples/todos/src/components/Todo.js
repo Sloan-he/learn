@@ -7,13 +7,14 @@ import React,{Component,PropTypes} from 'react'
 class Todo extends Component{
 
   render() {
-    const {completed,text,toggleClick} = this.props
+    const {completed,text,toggleClick,deleteClick} = this.props
     return (
       <li>
-        <span style={{
+        <a style={{
           textDecoration:completed ? 'line-through' : 'none'
-        }}>{text}</span>&nbsp;
-        <span onClick={toggleClick}>修改状态</span>&nbsp;
+        }}>{text}</a>&nbsp;
+        <span onClick={toggleClick}>修改</span>&nbsp;
+        <span onClick={deleteClick}>删除</span>
       </li>
     )
   }
@@ -23,7 +24,7 @@ Todo.propTypes = {
   text:PropTypes.string.isRequired,
   completed:PropTypes.bool.isRequired,
   toggleClick:PropTypes.func.isRequired,
-  deleteTodo:PropTypes.func
+  deleteClick:PropTypes.func.isRequired
 }
 
 export default Todo

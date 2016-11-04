@@ -2,6 +2,8 @@
  * Created by hesy on 2016/11/3.
  */
 
+
+
 const todos = (state = [],action) =>{
   switch (action.type){
     case 'ADD_TODO':
@@ -14,13 +16,18 @@ const todos = (state = [],action) =>{
         }
       ]
     case 'TOGGLE_TODO':
-      return state.map(todo =>{
-        if(todo.id === action.id){
+      return state.map(t => {
+        if(t.id === action.id){
           return {
-            ...todo,
-            completed:!todo.completed
+            ...t,
+            completed:!t.completed
           }
         }
+        return t
+      })
+    case 'DELETE_TODO':
+      return state.filter((t) =>{
+        return t.id !== action.id
       })
     default:
       return state
