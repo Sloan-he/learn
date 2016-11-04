@@ -12,7 +12,8 @@ class Todo extends Component{
       <li>
         <span style={{
           textDecoration:completed ? 'line-through' : 'none'
-        }}>{text}</span><span onClick={toggleClick}>修改</span>
+        }}>{text}</span>&nbsp;
+        <span onClick={toggleClick}>修改状态</span>&nbsp;
       </li>
     )
   }
@@ -21,7 +22,8 @@ class Todo extends Component{
 Todo.propTypes = {
   text:PropTypes.string.isRequired,
   completed:PropTypes.bool.isRequired,
-  toggleClick:PropTypes.func.isRequired
+  toggleClick:PropTypes.func.isRequired,
+  deleteTodo:PropTypes.func
 }
 
 export default Todo

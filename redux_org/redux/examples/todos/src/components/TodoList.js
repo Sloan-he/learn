@@ -5,7 +5,7 @@
 import React,{Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Todo from './Todo'
-import {toggleTodo} from '../actions'
+import {toggleTodo,deleteTodo} from '../actions'
 
 class TodoList extends Component{
   render() {
@@ -14,6 +14,7 @@ class TodoList extends Component{
       <div>
         <ul>
           {todos.map((todo,key) =>{
+            console.log('遍历todos',key,todo);
             return <Todo key={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} />
           })}
         </ul>
