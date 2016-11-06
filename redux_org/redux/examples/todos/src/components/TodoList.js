@@ -8,13 +8,14 @@ import Todo from './Todo'
 import {toggleTodo,deleteTodo} from '../actions'
 
 class TodoList extends Component{
+
   render() {
-    const {todos,dispatch} = this.props;
+    const {todos,dispatch,editVaule} = this.props;
     return (
       <div>
         <ul>
           {todos.map((todo,key) =>{
-            return <Todo key={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} deleteClick={() => dispatch(deleteTodo(todo.id))} />
+            return <Todo key={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} deleteClick={() => dispatch(deleteTodo(todo.id))} todoEdit={editVaule} />
           })}
         </ul>
       </div>
@@ -26,7 +27,8 @@ TodoList.propsTypes ={
   todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    editVaule:PropTypes.func.isRequired
   }).isRequired).isRequired
 }
 
