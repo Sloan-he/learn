@@ -10,12 +10,12 @@ import {toggleTodo,deleteTodo} from '../actions'
 class TodoList extends Component{
 
   render() {
-    const {todos,dispatch,editVaule} = this.props;
+    const {todos,dispatch,editTodo} = this.props;
     return (
       <div>
         <ul>
           {todos.map((todo,key) =>{
-            return <Todo key={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} deleteClick={() => dispatch(deleteTodo(todo.id))} todoEdit={editVaule} />
+            return <Todo key={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} deleteClick={() => dispatch(deleteTodo(todo.id))} editTodo={editTodo} />
           })}
         </ul>
       </div>
@@ -27,9 +27,9 @@ TodoList.propsTypes ={
   todos: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired,
-    editVaule:PropTypes.func.isRequired
-  }).isRequired).isRequired
+    text: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  editTodo:PropTypes.func.isRequired
 }
 
 let getVisibleTodo = (todos,filter) =>{
@@ -37,7 +37,7 @@ let getVisibleTodo = (todos,filter) =>{
     case 'SHOW_ACTIVE':
       return todos.filter((t) => !t.completed)
     case 'SHOW_COMPLETED':
-      return todos.filter((t) => t.completed) 
+      return todos.filter((t) => t.completed)
     default:
     return todos
   }

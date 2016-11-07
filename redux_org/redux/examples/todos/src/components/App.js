@@ -10,17 +10,20 @@ import Dialog from './Dialog'
 
 
 class App extends Component{
-
-  handleVaule(){
-  	console.log('editId:',arguments[0]);
+  constructor(props){
+    super(props)
+    this.state = {editId:null,editText:''}
+  }
+  editTodo = function(id,text){
+  	this.setState({editId:id,editText:text})
   }
   render(){
     return (
       <div>
         <AddTodo />
-        <TodoList editVaule={this.handleVaule} />
+        <TodoList editTodo={this.editTodo.bind(this)} />
         <Foot />
-       	<Dialog />	
+       	<Dialog editId={this.state.editId} editText={this.state.editText} />
       </div>
     )
   }

@@ -5,12 +5,9 @@
 import React,{Component,PropTypes} from 'react'
 
 class Todo extends Component{
-  componentDidMount(){
-    const {todoEdit} = this.props;
-    console.log(this.refs.editEl.id)
-    this.refs.editEl.addeventlistener('click',function(){
-      alert(1);
-    });
+  propsEditTodo = () =>{
+    const {id,editTodo,text} = this.props
+    editTodo(id,text)
   }
   render() {
     const {completed,text,toggleClick,deleteClick} = this.props
@@ -21,7 +18,7 @@ class Todo extends Component{
         }}>{text}</a>&nbsp;
         <span onClick={toggleClick}>{completed ? '点击进入待办' : '点击完成'}</span>&nbsp;
         <span onClick={deleteClick}>删除</span>&nbsp;
-        <span ref="editEl" id='vl'>修改</span>
+        <span onClick={this.propsEditTodo}>修改</span>
       </li>
     )
   }
@@ -32,7 +29,7 @@ Todo.propTypes = {
   completed:PropTypes.bool.isRequired,
   toggleClick:PropTypes.func.isRequired,
   deleteClick:PropTypes.func.isRequired,
-  todoEdit:PropTypes.func.isRequired
+  editTodo:PropTypes.func.isRequired
 }
 
 export default Todo

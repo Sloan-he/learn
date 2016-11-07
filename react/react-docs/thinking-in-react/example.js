@@ -59,13 +59,14 @@ var SearchBar = React.createClass({
     //表单变化改变时修改state
     handleChange:function(){
         this.props.onUserInput(
-            this.refs.filterTextInput.value,
+            'Football',
             this.refs.inStockOnlyInput.checked
         );
     },
     render:function(){
         return (
             <form action="">
+                <p onClick={this.handleChange}>11111</p>
                 <input type="text" placeholder="Search..." value={this.props.filterText} ref="filterTextInput" onChange={this.handleChange} />
                 <p><input type="checkbox" checked={this.props.inStockOnly} ref="inStockOnlyInput" onChange={this.handleChange} />{' '}Only show products in stock</p>
             </form>

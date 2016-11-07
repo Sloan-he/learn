@@ -20,7 +20,8 @@ const todos = (state = [],action) =>{
         if(t.id === action.id){
           return {
             ...t,
-            completed:!t.completed
+            completed:action.text ? t.completed : !t.completed,
+            text:action.text ? action.text : t.text
           }
         }
         return t
