@@ -9,6 +9,7 @@ class Todo extends Component{
     const {id,editTodo,text} = this.props
     editTodo(id,text)
   }
+
   render() {
     const {completed,text,toggleClick,deleteClick} = this.props
     return (
@@ -18,7 +19,7 @@ class Todo extends Component{
         }}>{text}</a>&nbsp;
         <span onClick={toggleClick}>{completed ? '点击进入待办' : '点击完成'}</span>&nbsp;
         <span onClick={deleteClick}>删除</span>&nbsp;
-        <span onClick={this.propsEditTodo}>修改</span>
+        {completed ? '' : <span onClick={this.propsEditTodo}>修改</span>}
       </li>
     )
   }
