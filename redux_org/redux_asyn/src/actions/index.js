@@ -2,41 +2,55 @@
  * Created by hesy on 2016/11/9.
  */
 
+import fetch from 'isomorphic-fetch'
+
+
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 
-export selectSureddit = (subreddit) =>{
+export function selectSubreddit(subreddit) {
   return {
-    type:SELECT_SUBREDDIT,
+    type: SELECT_SUBREDDIT,
     subreddit
   }
 }
 
 
-export const INVALTIDTE_SUBREDDIT = 'INVALTIDTE_SUBREDDIT'
+export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 
-export invalidatesubreddit(subreddit){
+export function invalidatesubreddit(subreddit) {
   return {
-    type:INVALTIDTE_SUBREDDIT,
+    type: INVALIDATE_SUBREDDIT,
     subreddit
   }
 }
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 
-export requestPosts = (subreddit) =>{
+export function requestPosts(subreddit) {
   return {
-    type:REQUEST_POSTS,
+    type: REQUEST_POSTS,
     subreddit
   }
 }
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
-export receivePosts = (subreddit,json) =>{
+export function receivePosts(subreddit, json) {
   return {
-    type:RECEIVE_POSTS,
+    type: RECEIVE_POSTS,
     subreddit,
-    posts:json.data.children.map(child => child.data),
-    receivedAt:Date.now()
+    posts: json.data.children.map(child => child.data),
+    receivedAt: Date.now()
   }
 }
+
+export const fetchPosts =  subreddit =>{
+  return dispatch =>{
+    dispatch(requestPosts(subreddit));
+    return fetch(`http://www.subreddit.com/r/${subreddit}.json`)
+      .then(response => response.json())
+      .then(json => dispatch(receivePosts(subreddit,json)))
+  }
+}
+
+
