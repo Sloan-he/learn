@@ -56,9 +56,24 @@ const postsBySubreddit = (state = {}, action) => {
       return state
   }
 }
+
+const TodoList = (state = [{id:1,text:'11'},{id:2,text:'22'}],action) =>{
+  switch (action.type){
+    case 'ADD_TODO':
+      return [
+        ...state,
+        {
+          id:action.id,
+          text:action.text
+        }
+      ]
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
-  postsBySubreddit,
-  selectedSubreddit
+  TodoList
 })
 
 export default rootReducer
