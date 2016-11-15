@@ -4,7 +4,6 @@
 
 //import fetch from 'isomorphic-fetch'
 
-
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 
 export function selectSubreddit(subreddit) {
@@ -75,11 +74,11 @@ export const fetchPostsIfNeeded = (subreddit) =>{
 }
 
 
-export const addTodo = (text,id) =>{
-  return {
-    type:'ADD_TODO',
-    text,
-    id
-  }
+export const addTodo = (text,id,dispatch) =>{
+    return {
+        type:'ADD_TODO',
+        text,
+        id
+      }
 }
 
