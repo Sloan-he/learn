@@ -10,8 +10,6 @@ import {addTodo} from './actions'
 import rootReduer from './reducers'
 
 //const loggerMiddleware = createLogger()
-
-
 //store.dispatch(selectSubreddit('reactjs'))
 //store.dispatch(fetchPosts('reactjs')).then(() =>
 //console.log(store.getState())
@@ -49,6 +47,41 @@ const timeoutScheduler = store => next => action =>{
 
   return function cancel(){
     clearTimeout(timeoutId)
+  }
+}
+
+const refScheduler = store => next =>{
+  let queuedActions = []
+  let frame = null
+
+  function loop(){
+    frame = null
+    try{
+      if(queuedActions.length){
+        next(queuedActions.shift())
+      }
+    }finally {
+      maybeRaf()
+    }
+  }
+
+  function maybeRaf(){
+    if(queuedActions.length && !frame){
+      frame = requestAnimationFrame(loop)
+    }
+  }
+
+  return action =>{
+    if(!action.meta || !action.meta.raf){
+      return next(action)
+    }
+
+    queuedActions.push(action)
+    maybeRaf()
+
+    return function cancel(){
+      queuedActions = queuedActions.filter(a => a !== action)
+    }
   }
 }
 
