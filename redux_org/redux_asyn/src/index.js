@@ -4,16 +4,12 @@
 
 //import thunkMiddleware from 'redux-thunk'
 //import createLogger from 'redux-logger'
-import {createStore} from 'redux'
+import {createStore,applyMiddleware} from 'redux'
 //import dispatch from 'react-redux'
 import {addTodo} from './actions'
 import rootReduer from './reducers'
 
 //const loggerMiddleware = createLogger()
-const store = createStore(rootReduer);
-
-
-
 
 
 //store.dispatch(selectSubreddit('reactjs'))
@@ -22,48 +18,66 @@ const store = createStore(rootReduer);
 //)
 
 
-
 //console.log(store.getState());
-function logger(store) {
-  return function wrapDispatchToAddLogging(next){
-    console.log(2)
-    console.log(next);
-    return function dispatchAndLog(action){
-      console.log(3);
-      console.log(action)
-      console.log('prev state', store.getState());
-      console.log('dispatch', action);
-      let result = next(action);
-      console.log('next state', store.getState());
-      return result;
-    }
+const logger = store => next => action => {
+  console.log('now time:',new Date())
+  console.group(action.type)
+  console.info('dispatching',action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  console.groupEnd(action.type)
+  return result
+}
+
+const crashReporter = store => next => action => {
+  try {
+    console.info('try action')
+    return next(action)
+  } catch (err) {
+    console.error('捕获一个异常!', err)
+    throw err
   }
 }
 
-function crashReporter(store){
-  let next = store.dispatch
-  store.dispatch = function dispatchAndReportErrors(action) {
-    try {
-      console.log('try')
-      return next(action)
-    } catch (err) {
-      console.error('捕获一个异常!', err)
-      throw err
-    }
+const timeoutScheduler = store => next => action =>{
+  console.log('now time:',new Date())
+  if(!action.meta || !action.meta.delay){
+    return next(action)
+  }
+
+  let timeoutId = setTimeout(() => next(action),action.meta.delay)
+
+  return function cancel(){
+    clearTimeout(timeoutId)
   }
 }
 
-function applyMiddlewareByMonkeypatching(store, middlewares) {
-  middlewares = middlewares.slice()
-  middlewares.reverse()
-
-  // 在每一个 middleware 中变换 dispatch 方法。
-  middlewares.forEach(middleware =>
-    store.dispatch = middleware(store)
-  )
-}
-
-applyMiddlewareByMonkeypatching(store, [ logger, crashReporter ])
 
 
-store.dispatch(addTodo(3,33))
+
+
+let createStoreWithMiddleware = applyMiddleware(
+  timeoutScheduler,
+  logger,
+  crashReporter
+)(createStore)
+const store = createStoreWithMiddleware(rootReduer);
+
+
+
+//function applyMiddleware(store, middlewares) {
+//  middlewares = middlewares.slice()
+//  middlewares.reverse()
+//
+//  // 在每一个 middleware 中变换 dispatch 方法。
+//  let dispatch = store.dispatch
+//  middlewares.forEach(middleware =>
+//    dispatch = middleware(store)(dispatch)
+//  )
+//  return Object.assign({}, store,{dispatch})
+//}
+
+//applyMiddleware(store, [logger, crashReporter ])
+
+
+store.dispatch(addTodo(33333,3))

@@ -74,11 +74,12 @@ export const fetchPostsIfNeeded = (subreddit) =>{
 }
 
 
-export const addTodo = (text,id,dispatch) =>{
+export const addTodo = (text,id) =>{
     return {
         type:'ADD_TODO',
         text,
-        id
+        id,
+        meta:{delay:2500}
       }
 }
 
