@@ -79,7 +79,7 @@ export const addTodo = (text,id) =>{
         type:'ADD_TODO',
         text,
         id,
-        meta:{delay:2500}
+        meta:{delay:2500,raf:true}
       }
 }
 

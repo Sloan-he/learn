@@ -20,12 +20,17 @@ import rootReduer from './reducers'
 const logger = store => next => action => {
   console.log('now time:',new Date())
   console.group(action.type)
+  console.info('prev state',store.getState())
   console.info('dispatching',action)
   let result = next(action)
   console.log('next state', store.getState())
   console.groupEnd(action.type)
   return result
 }
+
+
+
+
 
 const crashReporter = store => next => action => {
   try {
@@ -55,23 +60,29 @@ const refScheduler = store => next =>{
   let frame = null
 
   function loop(){
+    console.log('loop fuc')
     frame = null
     try{
       if(queuedActions.length){
+        console.log('loop try true')
         next(queuedActions.shift())
       }
     }finally {
+      console.log('finallu fuc')
       maybeRaf()
     }
   }
 
   function maybeRaf(){
+    console.info('length',queuedActions.length)
     if(queuedActions.length && !frame){
+      console.info('requestAnimationFrame')
       frame = requestAnimationFrame(loop)
     }
   }
 
   return action =>{
+    console.log('refScheduler midd')
     if(!action.meta || !action.meta.raf){
       return next(action)
     }
@@ -80,9 +91,17 @@ const refScheduler = store => next =>{
     maybeRaf()
 
     return function cancel(){
+      console.log('canel fuc')
       queuedActions = queuedActions.filter(a => a !== action)
     }
   }
+}
+
+const vanillaPromise = store => next => action =>{
+  if(typeof action.then !== 'function'){
+    return next(action)
+  }
+  return Promise.resolve(action).then(store.dispatch)
 }
 
 
@@ -90,6 +109,7 @@ const refScheduler = store => next =>{
 
 
 let createStoreWithMiddleware = applyMiddleware(
+  refScheduler,
   timeoutScheduler,
   logger,
   crashReporter
