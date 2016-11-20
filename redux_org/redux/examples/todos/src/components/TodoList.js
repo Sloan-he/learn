@@ -34,17 +34,17 @@ TodoList.propsTypes ={
 
 let getVisibleTodo = (todos,filter) =>{
   switch(filter) {
-    case 'SHOW_ACTIVE':
+    case 'Active':
       return todos.filter((t) => !t.completed)
-    case 'SHOW_COMPLETED':
+    case 'Completed':
       return todos.filter((t) => t.completed)
     default:
     return todos
   }
 }
 
-const mapStateToProps = (state) => ({
-  todos:getVisibleTodo(state.todos,state.visibleTodoList)
+const mapStateToProps = (state,ownProps) => ({
+  todos:getVisibleTodo(state.todos,ownProps.filter)
 })
 
 TodoList = connect(mapStateToProps)(TodoList);

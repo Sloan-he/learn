@@ -13,7 +13,7 @@ store.subscribe(() => console.log('store:',store.getState()))
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/index(:filter)" component={App} />
+      <Route path="/(:filter)" component={App} />
     </Router>
   </Provider>,
   document.getElementById('root')
