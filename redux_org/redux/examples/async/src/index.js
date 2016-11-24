@@ -8,6 +8,7 @@ import reducer from './reducers'
 import App from './containers/App'
 
 const middleware = [ thunk ]
+console.log(middleware)
 if (process.env.NODE_ENV !== 'production') {
   middleware.push(createLogger())
 }
@@ -17,7 +18,7 @@ const store = createStore(
   applyMiddleware(...middleware)
 )
 
-console.log('store',store);
+console.log('store',store.getState());
 
 render(
   <Provider store={store}>

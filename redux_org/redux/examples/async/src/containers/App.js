@@ -15,10 +15,12 @@ class App extends Component {
 
   componentDidMount() {
     const { dispatch, selectedReddit } = this.props
+    console.log(1)
     dispatch(fetchPostsIfNeeded(selectedReddit))
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(2)
     if (nextProps.selectedReddit !== this.props.selectedReddit) {
       const { dispatch, selectedReddit } = nextProps
       dispatch(fetchPostsIfNeeded(selectedReddit))
@@ -40,6 +42,7 @@ class App extends Component {
   render() {
     const { selectedReddit, posts, isFetching, lastUpdated } = this.props
     const isEmpty = posts.length === 0
+    console.info(selectedReddit,posts,isFetching,lastUpdated,isEmpty)
     return (
       <div>
         <Picker value={selectedReddit}
@@ -80,7 +83,7 @@ const mapStateToProps = state => {
     isFetching: true,
     items: []
   }
-
+  
   return {
     selectedReddit,
     posts,
