@@ -15,12 +15,15 @@ class App extends Component {
 
   componentDidMount() {
     const { dispatch, selectedReddit } = this.props
+    console.log('页面加载完后执行请求')
     dispatch(fetchPostsIfNeeded(selectedReddit))
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('props更改了')
     if (nextProps.selectedReddit !== this.props.selectedReddit) {
       const { dispatch, selectedReddit } = nextProps
+      console.log('查询条件变了')
       dispatch(fetchPostsIfNeeded(selectedReddit))
     }
   }
@@ -31,7 +34,6 @@ class App extends Component {
 
   handleRefreshClick = e => {
     e.preventDefault()
-
     const { dispatch, selectedReddit } = this.props
     dispatch(invalidateReddit(selectedReddit))
     dispatch(fetchPostsIfNeeded(selectedReddit))
@@ -40,6 +42,9 @@ class App extends Component {
   render() {
     const { selectedReddit, posts, isFetching, lastUpdated } = this.props
     const isEmpty = posts.length === 0
+   /* console.group('初始化的参数')
+    console.info('selectedReddit:',selectedReddit,"posts:",posts,"isFetching:",isFetching,"lastUpdated:",lastUpdated,"isEmpty:",isEmpty)
+    console.groupEnd('初始化的参数')*/
     return (
       <div>
         <Picker value={selectedReddit}

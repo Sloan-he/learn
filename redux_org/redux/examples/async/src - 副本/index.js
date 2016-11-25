@@ -17,7 +17,7 @@ const store = createStore(
   applyMiddleware(...middleware)
 )
 
-console.log('store',store);
+console.log('store',store.getState());
 
 render(
   <Provider store={store}>

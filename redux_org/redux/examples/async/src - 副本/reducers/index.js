@@ -42,8 +42,11 @@ const posts = (state = {
       return state
   }
 }
+var count = 0;
 
 const postsByReddit = (state = { }, action) => {
+  console.log('第',count++,'触发postsByReddit')
+  console.log('reducer接到action',action)
   switch (action.type) {
     case INVALIDATE_REDDIT:
     case RECEIVE_POSTS:
