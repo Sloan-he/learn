@@ -4,13 +4,13 @@
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 
-export const fetchPosts = reddit => (dispatch,getState) => {
-  if(shouldFetchsPosts(getState(),action)){
-
+export const fetchPostsIfNeed = reddit => (dispatch,getState) => {
+  if(shouldFetchsPosts(getState(),reddit)){
+    dispatch()
   }
 }
 
-const shouldFetchsPosts = (state,action) =>{
+const shouldFetchsPosts = (state,reddit) =>{
   const posts = state.postsByReddit[reddit]
   if(!posts){
     return true
@@ -19,6 +19,10 @@ const shouldFetchsPosts = (state,action) =>{
     return false
   }
   return posts.didInvalidate
+}
+
+const fetchPosts = reddit = dispatch =>{
+
 }
 
 
