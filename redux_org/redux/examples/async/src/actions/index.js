@@ -4,13 +4,13 @@
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 
-export const fetchPostsIfNeed = reddit => (dispatch,getState) => {
-  if(shouldFetchsPosts(getState(),reddit)){
-    dispatch()
-  }
-}
+const requestPosts = reddit =>({
+  type:REQUEST_POSTS,
+  reddit
+})
 
 const shouldFetchsPosts = (state,reddit) =>{
+  console.log(111)
   const posts = state.postsByReddit[reddit]
   if(!posts){
     return true
@@ -21,9 +21,25 @@ const shouldFetchsPosts = (state,reddit) =>{
   return posts.didInvalidate
 }
 
-const fetchPosts = reddit = dispatch =>{
-
+const fetchPosts = reddit => dispatch =>{
+  console.log(2222)
+  dispatch(requestPosts(reddit));
 }
+
+export const fetchPostsIfNeed = reddit => (dispatch,getState) => {
+  console.log(reddit)
+  console.log(dispatch)
+  console.log(getState)
+  if(shouldFetchsPosts(getState(),reddit)){
+    console.log(reddit)
+    dispatch(fetchPosts(reddit))
+  }
+}
+
+
+
+
+
 
 
 

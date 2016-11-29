@@ -1,15 +1,11 @@
-import React from 'react'
+/**
+ * Created by hesy on 2016/11/25.
+ */
 import {render} from 'react-dom'
-import Root from './containers/Root'
-import {Provider} from 'react-redux'
-import configureStore from './configureStore'
+import React from 'react'
+import thunk from 'redux-thunk'
+import createLogger from 'redux-logger'
+import {applyMiddleware,createStore} from 'redux'
 
 
-const store = configureStore()
 
-render(
-	<Provider store={store}>
-	<Root />
-	</Provider>,
-	document.getElementById('root')
-)
