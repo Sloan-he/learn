@@ -20,6 +20,8 @@ const store = createStore(
   applyMiddleware(...middleware)
 )
 
+//store.subscribe(() => console.log('store:',store.getState()))
+
 
 
 store.dispatch(fetchPostsIfNeed('reactjs'))
