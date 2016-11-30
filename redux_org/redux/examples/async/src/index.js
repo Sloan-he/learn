@@ -2,12 +2,13 @@
  * Created by hesy on 2016/11/25.
  */
 import {render} from 'react-dom'
+import {Provider} from 'react-redux'
 import React from 'react'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import {applyMiddleware,createStore} from 'redux'
 import reducer from './reducers'
-import {fetchPostsIfNeed} from './actions'
+import App from './containers/App'
 
 
 const middleware = [ thunk ]
@@ -20,8 +21,12 @@ const store = createStore(
   applyMiddleware(...middleware)
 )
 
-//store.subscribe(() => console.log('store:',store.getState()))
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
 
 
 
-store.dispatch(fetchPostsIfNeed('reactjs'))
