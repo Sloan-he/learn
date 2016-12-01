@@ -4,6 +4,13 @@
 
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const SELECT_POSTS = 'SELECT_POSTS'
+
+
+const selectPosts = reddit =>({
+  type:SELECT_POSTS,
+  reddit
+})
 
 const requestPosts = reddit =>({
   type:REQUEST_POSTS,
@@ -19,7 +26,6 @@ const receivePosts = (reddit,json) =>({
 
 
 const shouldFetchsPosts = (state,reddit) =>{
-  console.log(111)
   const posts = state.postsByReddit[reddit]
   if(!posts){
     return true
@@ -31,7 +37,6 @@ const shouldFetchsPosts = (state,reddit) =>{
 }
 
 const fetchPosts = reddit => dispatch =>{
-  console.log(2222)
   dispatch(requestPosts(reddit));
   return fetch(`https://www.reddit.com/r/${reddit}.json`)
             .then(response => response.json())
@@ -40,7 +45,6 @@ const fetchPosts = reddit => dispatch =>{
 
 export const fetchPostsIfNeed = reddit => (dispatch,getState) => {
   if(shouldFetchsPosts(getState(),reddit)){
-    console.log(reddit)
     dispatch(fetchPosts(reddit))
   }
 }

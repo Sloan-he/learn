@@ -1,10 +1,19 @@
 import {combineReducers} from 'redux'
 import {
   REQUEST_POSTS,
-  RECEIVE_POSTS
+  RECEIVE_POSTS,
+  SELECT_POSTS
 } from '../actions'
 
 
+const selectReddit = (state = 'reactjs',action) => {
+  switch (action.type){
+    case SELECT_POSTS:
+      return action.reddit
+    default:
+      return state
+  }
+}
 
 const posts = (state = {
   isFetching:false,
@@ -13,7 +22,6 @@ const posts = (state = {
 },action) =>{
   switch (action.type){
     case REQUEST_POSTS:
-      console.log('REQUEST_POSTS')
       return {
         ...state,
         isFetching:true
@@ -44,7 +52,8 @@ const postsByReddit = (state = { },action) =>{
 }
 
 const reducer =  combineReducers({
-  postsByReddit
+  postsByReddit,
+  selectReddit
 })
 
 export default reducer
