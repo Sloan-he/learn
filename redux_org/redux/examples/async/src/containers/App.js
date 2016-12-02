@@ -3,25 +3,35 @@
  */
 import React,{Component,PropTypes} from 'react'
 import {connect} from 'react-redux'
-import {fetchPostsIfNeed} from '../actions'
+import {fetchPostsIfNeed,selectPosts} from '../actions'
 import Posts from '../components/posts'
 import Picker from '../components/picker'
 
 
 class App extends Component{
+  constructor(props){
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+  }
   componentDidMount(){
     const {dispatch} = this.props
     dispatch(fetchPostsIfNeed('reactjs'))
   }
-  componentDidUpdate(nextProps){
-
+  componentWillReceiveProps(nextProps){
+    if(nextProps.selectReddit !== this.props.selectReddit){
+      const {dispatch} = this.props
+      dispatch(fetchPostsIfNeed(nextProps.selectReddit))
+    }
+  }
+  handleChange = reddit =>{
+    this.props.dispatch(selectPosts(reddit))
   }
   render(){
     const {postsByReddit,selectReddit} = this.props
     return(
       <div>
         <h1>{selectReddit}</h1>
-        <Picker options={['reactjs','frontend']} lastUpdated={postsByReddit.lastUpdated || 0} isFetching={postsByReddit.isFetching} />
+        <Picker reddit={selectReddit} options={['reactjs','frontend']} lastUpdated={postsByReddit.lastUpdated || 0} isFetching={postsByReddit.isFetching} onChange={this.handleChange} />
         {postsByReddit.item.length > 0
           ? <Posts posts={postsByReddit.item} /> : (postsByReddit.isFetching ? <h2>Loading...</h2> : <h2>Empty</h2>)
         }

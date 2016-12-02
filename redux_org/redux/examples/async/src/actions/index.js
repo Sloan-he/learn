@@ -7,7 +7,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SELECT_POSTS = 'SELECT_POSTS'
 
 
-const selectPosts = reddit =>({
+export const selectPosts = reddit =>({
   type:SELECT_POSTS,
   reddit
 })

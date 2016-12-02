@@ -6,7 +6,7 @@ import {
 } from '../actions'
 
 
-const selectReddit = (state = 'reactjs',action) => {
+export const selectReddit = (state = 'reactjs',action) => {
   switch (action.type){
     case SELECT_POSTS:
       return action.reddit
