@@ -28,12 +28,14 @@ const receivePosts = (reddit,json) =>({
 const shouldFetchsPosts = (state,reddit) =>{
   const posts = state.postsByReddit[reddit]
   if(!posts){
+    console.log(1)
     return true
   }
   if(posts.isFetching){
+    console.log(2)
     return false
   }
-  return posts.didInvalidate
+  return true
 }
 
 const fetchPosts = reddit => dispatch =>{
