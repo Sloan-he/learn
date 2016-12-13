@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, hashHistory } from 'react-router'
+import { Router, Route, browserHistory  } from 'react-router'
 import App from './modules/App'
 import About from './modules/About'
 import Repos from './modules/Repos'
@@ -9,7 +9,7 @@ import AboutMessage from './modules/About/Message'
 import Message from './modules/Message'
 
 render((
-  <Router history={hashHistory}>
+  <Router history={browserHistory }>
     <Route path="/" component={App}>
       <Route path="/repos" component={Repos}/>
       <Route path="/repos/:userName/:repoName" component={Repo}/>  

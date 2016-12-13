@@ -6,7 +6,7 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import {Router,Route,browserHistory} from 'react-router'
 
-const store = createStore(reducer,{todos:[{id:100,completed:false,text:'100000'}]})
+const store = createStore(reducer)
 
 store.subscribe(() => console.log('store:',store.getState()))
 

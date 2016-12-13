@@ -8,24 +8,14 @@ import Todo from './Todo'
 import {toggleTodo,deleteTodo} from '../actions'
 
 class TodoList extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {todoState: this.props.todos};
-  }
-  componentWillReceiveProps(nextProps){
-    console.log('dd')
-    this.setState({
-      todoState:nextProps.todos
-    })
-  }
+
   render() {
     const {todos,dispatch,editTodo} = this.props;
-    console.log(this.state.todoState)
     return (
       <div>
         <ul>
-          {this.state.todoState.map((todo,key) =>{
-            return <Todo key={key} ll={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} deleteClick={() => dispatch(deleteTodo(todo.id))} editTodo={editTodo} />
+          {todos.map((todo,key) =>{
+            return <Todo key={key} {...todo} toggleClick={() => dispatch(toggleTodo(todo.id))} deleteClick={() => dispatch(deleteTodo(todo.id))} editTodo={editTodo} />
           })}
         </ul>
       </div>

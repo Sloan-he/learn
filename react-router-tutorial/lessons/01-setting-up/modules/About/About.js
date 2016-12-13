@@ -5,7 +5,7 @@ export default React.createClass({
   render() {
     return <div>
     About
-    <Link to="about/abmessage/111" >Message</Link>
+    <Link to="/abmessage/111" >Message</Link>
     </div>
   }
 })

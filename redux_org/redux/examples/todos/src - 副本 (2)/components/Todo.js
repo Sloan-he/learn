@@ -11,8 +11,7 @@ class Todo extends Component{
   }
 
   render() {
-    const {completed,text,toggleClick,deleteClick,ll} = this.props
-    console.log(ll)
+    const {completed,text,toggleClick,deleteClick} = this.props
     return (
       <li>
         <a style={{
