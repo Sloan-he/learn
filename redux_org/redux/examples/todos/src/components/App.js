@@ -19,6 +19,7 @@ class App extends Component{
   }
   render(){
     const {params} = this.props
+    console.log(this.props.params)
     return (
       <div>
         <AddTodo />
