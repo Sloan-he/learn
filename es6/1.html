@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="browser.min.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/babel">
+const setFormatDate = (dateArg = new Date()) =>{
+  let dateObj = new Date(dateArg)
+  let year = dateObj.getFullYear()
+  let month = dateObj.getMonth() + 1
+  let hours = dateObj.getHours()
+  let getDate = dateObj.getDate()
+  let minutes = dateObj.getMinutes()
+  let formatDate
+  if(month <= 9){
+    month = '0' + month
+  }
+  if(getDate <= 9){
+    getDate = '0' + getDate
+  }
+  if(hours <= 9){
+    hours = '0' + hours
+  }
+  if(minutes <= 9){
+    minutes = '0' + minutes
+  }
+  formatDate = year + '-' + month + '-' + getDate + ' ' + hours + ':' + minutes
+  
+  alert(formatDate)
+  return formatDate
+}
+setFormatDate('2017-11-12 7:1:2')
+</script>
