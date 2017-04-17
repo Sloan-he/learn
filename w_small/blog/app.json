@@ -1,7 +1,8 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/test/test"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -10,23 +11,6 @@
     "navigationBarTextStyle":"black",
     "backgroundColor":"#f7f7f7",
     "enablePullDownRefresh":true
-  },
-  "tabBar":{
-    "selectedColor":"red",
-    "list":[
-      {
-        "pagePath":"pages/index/index",
-        "text":"首页",
-        "iconPath":"",
-        "selectedIconPath":""
-      },
-      {
-        "pagePath":"pages/logs/logs",
-        "text":"日志",
-        "iconPath":"",
-        "selectedIconPath":""
-      }
-    ]
   },
   "debug":true
 }

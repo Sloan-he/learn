@@ -10,7 +10,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../test/test'
     })
   },
   onLoad: function () {
@@ -32,6 +32,7 @@ Page({
     }
   },
   viewClick:function(){
+    app.world = '您好,开发者'
     this.setData({
       welcome:'点击了'
     })

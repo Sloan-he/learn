@@ -11,6 +11,7 @@ import Message from './modules/Message'
 render((
   <Router history={browserHistory }>
     <Route path="/" component={App}>
+      <IndexRoute component={App} />
       <Route path="/repos" component={Repos}/>
       <Route path="/repos/:userName/:repoName" component={Repo}/>  
       <Route path="/about" component={About}>
@@ -18,8 +19,6 @@ render((
       </Route>
     </Route>
     <Route path="/message" component={Message} />
-	<Route path="/message2" component={Message} />
-
-    
+	  <Route path="/message2" component={Message} />
   </Router>
 ), document.getElementById('app'))
