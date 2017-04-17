@@ -6,11 +6,23 @@
 </head>
 <body>
 	<p>中间件</p>
-	<form action="http://localhost:3000/fileupload" method="post" enctype="multipart/form-data">
-		name <input type="text" name="username">
-		pwd <input type="text" name="pwd">
+	<form action="/fileupload" method="post" enctype="multipart/form-data" id="form">
 		<input type="file" name="uploadFile">
-		<input type="submit" value="Commit">
+		<input type="button" value="Commit" id="dsd">
 	</form>
 </body>
 </html>
+<script src="jquery.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+	$('#dsd').click(function(){
+
+		console.log($("#form")[0])
+		var formData = new FormData($("#form")[0]);
+		console.log(formData.get('uploadFile'))
+		axios.post('/fileupload',formData,{headers:{'Content-Type':'multipart/form-data'}}).then(function(res){
+			console.log(res)
+		})
+	})
+</script>

@@ -31,7 +31,7 @@ app.post('/fileupload',function(req,res){
 	busboyobj.on('file',function(filedname,file,filename,encoding,mimetype){
 
 		// 在指定位置生成文件
-		var writeStream = fs.createWriteStream('./upload/'+filename);
+		var writeStream = fs.createWriteStream('./uploads/'+filename);
 
 		//读取数据
 		file.on('data',function(data){
